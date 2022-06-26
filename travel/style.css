@@ -1,0 +1,265 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 1px solid red;
+}
+html {
+    scroll-behavior: smooth;
+    font-family: 'Aleo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+
+color: #0D606F;
+}
+body {
+min-height: 100vh;
+max-width: 1440px;
+}
+
+.wrapper {
+    max-width: 1201px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-family: 'Aleo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 96px;
+    color: #FFFFFF;
+
+}
+h3 {
+    font-family: 'Aleo';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+h2 {
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 53px;
+    color: #F2785C;
+}
+/* font-family: 'Aleo', serif;
+font-family: 'Red Hat Text', sans-serif;
+*/
+/* Header starts  */
+
+.header {
+    background: rgba(242, 120, 92, 0.7);
+    box-shadow: 0px 4px 4px rgba(13, 96, 111, 0.5);
+    z-index: 1;
+    /* overflow: visble; */
+    
+}
+
+.header_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 25px;
+    padding-bottom: 24px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px;
+}
+.header_wrapper
+
+.navigation_list {
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    padding: 0px;
+}
+
+.nav_link {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.nav_link:hover, .nav_link:focus, nav_link:active {
+    opacity: 0.5;
+}
+
+.nav_item {
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    padding-right: 42px;
+}
+
+.nav_item:last-child {
+    padding-right: 0px;
+}
+
+.header_button {
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #FFFFFF;
+    padding: 10px 30px;
+    background: #0D606F;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border-radius: 10px;
+}
+.header_logo {
+    display: flex;
+    
+}
+
+.header_name {
+    font-family: 'Magra';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    color: #FFFFFF;
+}
+
+.header_logo_pic {
+size: 30px;
+}
+
+/* .header_pic {
+
+    transform: translateY(-90px);
+    height: 765px;
+    width: 1440px;
+    top: 0;
+    left: 0;
+    position: relative;
+    background: url(./assets/header.jpg) no-repeat center;
+    background-size: cover;
+   opacity: 0.3;
+   z-index: 0;
+   overflow: hidden;
+} */
+
+/* Header ends  */
+/* main starts  */
+/* how it works starts  */
+
+.wrapper_how {
+    max-width: 890px;
+}
+
+.how_subtitle {
+    padding-top: 46px;
+    padding-bottom: 46px;
+}
+
+.how_search {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search {
+    font-family: 'Aleo';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    border: 0;
+    padding: 0px 42px 0px 41px;
+}
+
+::placeholder {
+    color: #F2785C;
+}
+
+.button_search {
+    margin: 18px;
+    padding: 13.5px 32.5px;
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #FFFFFF;
+    background: #0D606F;
+    box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border-radius: 10px;
+}
+/* how it works ends  */
+
+/* 3 way starts  */
+
+.plan_wrapper {
+   text-align: center;
+   padding-bottom: 97px;
+}
+.section_subtittle{
+    text-align: center;
+}
+
+.plan_actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+.logo_square {
+    display: flex;
+    
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+    background: #F2785C;
+    border-radius: 16px;
+}   
+
+.plan_logo {
+    display: block;
+    margin:  auto;
+    padding: auto;
+    vertical-align: center;
+
+    
+}
+.plan_element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 3 way ends */
+
+/* Destintations start */
+
+.destinations_wrapper {
+    max-width: 2520px;
+}
+
+.block_pic {
+    display: flex;
+    justify-content: space-between;
+    overflow: hiden;
+}
+
+.destination_pic {
+    margin-right: 60px;
+    overflow: hiden;
+}
+
+.destination_pic:last-child {
+    margin-right: 0px
+}
+
+/* Destintations ends */
