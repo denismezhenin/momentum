@@ -17,6 +17,8 @@ color: #0D606F;
 body {
 min-height: 100vh;
 max-width: 1440px;
+background-color: #FFFFFF;
+
 }
 
 .wrapper {
@@ -244,18 +246,22 @@ size: 30px;
 /* Destintations start */
 
 .destinations_wrapper {
-    max-width: 2520px;
+    position: relative;
+    overflow: hidden;
+    max-width: 1440px;
+    background-color: #FFFFFF;
 }
 
 .block_pic {
-    display: flex;
+   display: flex;
+   
     justify-content: space-between;
-    overflow: hiden;
+    align-items: center;
+    width: 2520px;
 }
 
 .destination_pic {
-    margin-right: 60px;
-    overflow: hiden;
+     margin-right: 60px;
 }
 
 .destination_pic:last-child {
