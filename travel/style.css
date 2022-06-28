@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0 auto;
     padding: 0;
-    
 }
 html {
     scroll-behavior: smooth;
@@ -11,14 +10,12 @@ html {
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
-
-color: #0D606F;
 }
+
 body {
 min-height: 100vh;
 max-width: 1440px;
 background-color: #FFFFFF;
-
 }
 
 .wrapper {
@@ -33,9 +30,8 @@ h1 {
     font-size: 80px;
     line-height: 96px;
     color: #FFFFFF;
-
 }
-h3 {
+h4 {
     font-family: 'Aleo';
     font-style: italic;
     font-weight: 700;
@@ -52,18 +48,66 @@ h2 {
     line-height: 53px;
     color: #F2785C;
 }
+
+h3 {
+    font-family: 'Aleo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 42px;
+    color: #0D606F;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover, .link:focus, link:active {
+    opacity: 0.5;
+}
+
 /* font-family: 'Aleo', serif;
 font-family: 'Red Hat Text', sans-serif;
 */
 /* Header starts  */
 
+/* .header_pic {
+    transform: translateY(-90px);
+    height: 765px;
+    width: 1440px; 
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: url(./assets/header.jpg) no-repeat center;
+    background-size: cover;
+   
+   z-index: -1;
+   overflow: hidden;
+} */
+
 .header {
     background: rgba(242, 120, 92, 0.7);
     box-shadow: 0px 4px 4px rgba(13, 96, 111, 0.5);
-    z-index: 1;
+    z-index: 500;
+    /* opacity: auto; */
     /* overflow: visble; */
-    
 }
+.header > * {
+    z-index: 500;
+}
+
+.header::after {
+    content: "";
+    height: 765px;
+    width: 1440px; 
+    top: 0;
+    position: absolute;
+    background: url(./assets/header.jpg) no-repeat center;
+    background-size: cover;
+    z-index: -1;
+}
+
+
 
 .header_wrapper {
     display: flex;
@@ -76,7 +120,6 @@ font-family: 'Red Hat Text', sans-serif;
     padding-right: 0px;
     margin: 0px;
 }
-.header_wrapper
 
 .navigation_list {
     display: flex;
@@ -120,11 +163,8 @@ font-family: 'Red Hat Text', sans-serif;
     border-radius: 10px;
     outline: none;
 }
-.header_button:active, header_button:focus {
-    outline: none;
-    }
-    
 
+    
 .header_logo {
     display: flex;
     
@@ -139,24 +179,7 @@ font-family: 'Red Hat Text', sans-serif;
     color: #FFFFFF;
 }
 
-.header_logo_pic {
-size: 30px;
-}
 
-/* .header_pic {
-
-    transform: translateY(-90px);
-    height: 765px;
-    width: 1440px;
-    top: 0;
-    left: 0;
-    position: relative;
-    background: url(./assets/header.jpg) no-repeat center;
-    background-size: cover;
-   opacity: 0.3;
-   z-index: 0;
-   overflow: hidden;
-} */
 
 /* Header ends  */
 /* main starts  */
@@ -167,7 +190,13 @@ size: 30px;
     margin-left: 0;
     padding-top: 32px;
     padding-bottom: 221px;
+    z-index: 500;
+    
 }
+.wrapper_how > * {
+    z-index: 500;
+}
+
 
 .how_subtitle {
     padding-top: 46px;
@@ -181,14 +210,21 @@ size: 30px;
     justify-content: space-between;
 }
 
+
+  
+
 .search {
+
+   margin-left: 0;
+    padding: 0px 42px 0px 41px;
     font-family: 'Aleo';
     font-style: italic;
     font-weight: 400;
     font-size: 24px;
     line-height: 29px;
     border: 0;
-    padding: 0px 42px 0px 41px;
+    background: none;
+
 }
 
 ::placeholder {
@@ -207,6 +243,13 @@ size: 30px;
     background: #0D606F;
     box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
     border-radius: 10px;
+    transition: 0.3s;
+}
+
+.button:active, .button:hover, .button:focus {
+    cursor: pointer;
+    background: #236d7a;
+    
 }
 /* how it works ends  */
 
@@ -227,9 +270,9 @@ size: 30px;
     justify-content: space-between;
     padding-top: 40px;
 }
+
 .logo_square {
     display: flex;
-    
     width: 100px;
     height: 100px;
     margin-bottom: 30px;
@@ -240,7 +283,7 @@ size: 30px;
 .plan_logo {
     display: block;
     margin:  auto;
-    padding: auto;
+    
     /* vertical-align: center; */
 }
 .plan_element {
@@ -308,10 +351,8 @@ size: 30px;
 .button_arroy {
     position: relative;
     height: 59px;
-    padding-top: auto;
     padding-left: 81px;
     padding-right: 31px;
-    padding-bottom: auto;
     font-family: 'Red Hat Text';
     font-style: normal;
     font-weight: 500;
@@ -331,8 +372,7 @@ size: 30px;
     position: absolute;
     left: 31px;
     top: 8px;
-    
-  margin: 0 0;
+    margin: 0 0;
 
 }
 /* .button_arroy::before {
@@ -344,10 +384,13 @@ left 10px
 /* Destintations ends */
 
 /* stories starts */
+
 .stories {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background: rgba(255, 255, 255, 0.6);
+    padding-bottom: 41px;
 }
 
 .subtittle_stories {
@@ -372,9 +415,32 @@ left 10px
 .story_sub {
     padding-bottom: 24px;
 }
+
+.story_link {
+color: #0D606F;
+font-weight: 700;
+}
+
 /* stories ends */
 
 /* Footer starts */
+
+.footer > * {
+    z-index: 500;
+}
+
+.footer::after {
+    content: "";
+    height: 1331px;
+    width: 1442px; 
+    margin-top: -1331px;
+   
+    position: absolute;
+    background: url(./assets/footer.jpg) no-repeat center; 
+    background-size: cover;
+    z-index: -1;
+}
+
 
 .footer_wrapper {
     display: flex;
@@ -382,6 +448,7 @@ left 10px
     align-items: center;
     padding: 13.5px 0;
 }
+
 .footer_wrapper > * {
     padding: 0px;
     margin: 0px;
@@ -393,6 +460,7 @@ left 10px
     align-items: center;
     margin: 0;
 }
+
 .rs { 
     height: 33.65px;
     width: 100px;
@@ -401,8 +469,51 @@ left 10px
     background-repeat: no-repeat;
     margin: 0px;
     padding: 0px;
-     
 }
+
+.footer_link {
+    color: #FFFFFF;
+}
+
+.footer_text {
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+
+    color: #FFFFFF;
+}
+
+.social-links {
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    padding: 0px;
+}
+
+.social-media {
+    padding-right: 20px;
+}
+
+.social-media:last-child {
+    padding-right: 0px;
+}
+
+/* .footer_pic {
+    
+        transform: translateY(-90px);
+        height: 765px;
+        width: 1440px; 
+        bottom: 0px;
+        left: 0;
+        position: absolute;
+        background: url(./assets/footer.jpg) no-repeat center;
+        background-size: cover;
+       
+       z-index: -1;
+       overflow: hidden;
+    } */
 
 
 /* Footer ends */
