@@ -16,6 +16,15 @@ body {
 min-height: 100vh;
 max-width: 1440px;
 background-color: #FFFFFF;
+    
+    
+    /* margin-top: -1337px; */
+   
+    /* position: absolute; */
+    /* background: url(./assets/footer.jpg) no-repeat center bottom; 
+   
+    z-index: -1; */
+
 }
 
 .wrapper {
@@ -99,11 +108,12 @@ font-family: 'Red Hat Text', sans-serif;
 .header::after {
     content: "";
     height: 765px;
-    width: 1440px; 
+    width: 100%; 
     top: 0;
+    left: 0;
     position: absolute;
     background: url(./assets/header.jpg) no-repeat center;
-    background-size: cover;
+    
     z-index: -1;
 }
 
@@ -240,8 +250,8 @@ margin: 0px;
   
 
 .search {
-
-   margin-left: 0;
+    flex-grow: 1;
+    margin-left: 0;
     padding: 0px 42px 0px 41px;
     font-family: 'Aleo';
     font-style: italic;
@@ -526,12 +536,12 @@ font-weight: 700;
 .footer::after {
     content: "";
     height: 1331px;
-    width: 1442px; 
+    width: 100%;
     margin-top: -1337px;
-   
+    left: 0;
     position: absolute;
     background: url(./assets/footer.jpg) no-repeat center; 
-    background-size: cover;
+   
     z-index: -1;
 }
 
@@ -563,11 +573,10 @@ font-weight: 700;
     background-repeat: no-repeat;
     margin: 0px;
     padding: 0px;
-}
-
-.footer_link {
     color: #FFFFFF;
 }
+
+
 
 .footer_text {
     font-family: 'Red Hat Text';
@@ -592,6 +601,15 @@ font-weight: 700;
 
 .social-media:last-child {
     padding-right: 0px;
+}
+
+.github {
+    height: 30px;
+    width: 30px;
+}
+
+.bottom_wrapper {
+    position: relative;
 }
 
 /* .footer_pic {
