@@ -28,8 +28,9 @@ background-color: #FFFFFF;
 }
 
 .wrapper {
-    max-width: 1200px;
+    max-width: 1230px;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
 h1 {
@@ -168,9 +169,7 @@ margin: 0px;
     line-height: 21px;
     padding-right: 42px;
 }
-.nav_item:first-child {
-    padding-right: 52px;
-}
+
 
 .nav_item:last-child {
     padding-right: 20px;
@@ -245,9 +244,6 @@ margin: 0px;
     display: flex;
     justify-content: space-between;
 }
-
-
-  
 
 .search {
     flex-grow: 1;
@@ -331,7 +327,7 @@ margin: 0px;
 }
 
 .plan_element:first-child {
-    margin-right: 68px;
+    
     padding-left: 10px; 
 }
 
@@ -629,3 +625,70 @@ font-weight: 700;
 
 
 /* Footer ends */
+
+
+@media (max-width: 750px) {
+    html {
+        font-size: calc(9px + (20 - 9) * ((100vw - 390px) / (750 - 390)));
+        line-height: calc(11px + (24 - 11) * ((100vw - 390px) / (750 - 390)));
+    }
+    h1 {
+        font-size: calc(20px + (80 - 20) * ((100vw - 390px) / (750 - 390)));
+        line-height: calc(25px + (96 - 25) * ((100vw - 390px) / (750 - 390)));
+    }
+    h2 {
+        font-size: calc(14px + (40 - 14) * ((100vw - 390px) / (750 - 390)));
+        line-height: calc(14px + (53 - 19) * ((100vw - 390px) / (750 - 390)));
+    }
+    h3 {
+        font-weight: 700;
+        font-size: calc(11px + (35 - 11) * ((100vw - 390px) / (750 - 390)));
+        line-height: calc(13px + (42 - 13) * ((100vw - 390px) / (750 - 390)));
+    }
+    h4 {
+        font-size: calc(9px + (20 - 9) * ((100vw - 390px) / (750 - 390)));
+        line-height: calc(11px + (24 - 11) * ((100vw - 390px) / (750 - 390)));
+    }
+    .header_name {
+        font-size: calc(11px + (35 - 11) * ((100vw - 390px) / (750 - 390)));
+        line-height: calc(13px + (42 - 13) * ((100vw - 390px) / (750 - 390)));
+    }
+    .search {
+        /* flex-grow: 1; */
+        padding: 0px 0px 0px 17px;
+        font-size: calc(14px + (24 - 14) * ((100vw - 390px) / (750 - 390)));
+        line-height: calc(17px + (29 - 17) * ((100vw - 390px) / (750 - 390)));
+    }
+
+    .button_search {
+        margin: 9px 9px 9px 0px;
+        padding: 9px 7.5px;
+        font-size: calc(11px + (24 - 11) * ((100vw - 390px) / (750 - 390)));
+        line-height: calc(15px + (32 - 15) * ((100vw - 390px) / (750 - 390)));
+    }
+    .logo_square {
+        width: calc(70px + (100 - 70) * ((100vw - 390px) / (750 - 390)));
+        height: 70px;
+    }
+    .plan_element {
+        flex: 0 0 30%;
+
+    }
+    f
+
+    .plan_element:first-child {
+        margin-right: 15px;
+        
+        margin-right: 10px;
+    }
+    
+    .plan_element:last-child {
+       
+        padding-right: 15px; 
+    }
+   
+    
+
+
+
+}
