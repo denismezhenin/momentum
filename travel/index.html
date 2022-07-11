@@ -14,7 +14,8 @@
 </head>
 <body>
     <header class="header">
-                <div class="wrapper">
+        <div class="wrapper_mobile"></div>
+                <div class="wrapper mobile_header_wrapper">
                     <div class="header_wrapper">
                 <div class="header_logo_wrapper">
                    <a href="#!" class="header_logo link"><img src="./assets/svg/Vector.svg" alt="logo" class="header_logo_pic">
@@ -22,17 +23,21 @@
                         Travel Portal
                     </div></a> 
                 </div>
-               
                 <nav class="navigation"> 
                     <ul class="navigation_list">
-                        <li class="nav_item"><a href="#how-it-works" class="nav_link">How It Wokrs</a></li>
+                        <li class="nav_item"><a href="#how-it-works" class="nav_link">How It Works</a></li>
                         <li class="nav_item"><a href="#plan-your-trip" class="nav_link">Plan Your Trip</a></li>
                         <li class="nav_item"><a href="#destinations" class="nav_link">Destinations</a></li>
                         <li class="nav_item"><a href="#stories" class="nav_link">Travel Stories</a></li>
+                        <li class="nav_item"><a href="#" class="nav_link">Account</a></li>
+                        <li class="nav_item"><a href="#footer" class="nav_link">Social Media</a></li>
                     </ul>
                 </nav>
                 <div class="header_buton_block">
                     <button class="header_button button">Login</button>
+                </div>
+                <div class="header_burger">
+                    <span></span>
                 </div>
             </div>
         </div>
@@ -68,24 +73,37 @@
                 <div class="plan_actions">
                     <div class="plan_element">
                     
-                        <div class="logo_square">
-                            <img src="assets/svg/tell.png" alt="" class="plan_logo">
+                        <div class="logo_square first_logo">
+                            <picture class="plan_logo">
+                                <source srcset="assets/svg/tell_sm.svg" type="image/svg+xml" media="(max-width:767px)">
+                                <source srcset="assets/svg/tell.svg" type="image/svg+xml" media="(min-width:767px)">
+                                <img src="assets/svg/tell.svg" alt="">
+                            </picture>
+                            
                         </div>
-                       <p>Tell us what you want to do</p>
+                       <p class="mobile_p">Tell us what you want to do</p>
     
                     </div>
                     <div class="plan_element">
-                        <div class="logo_square">
-                            <img src="assets/svg/share.png" alt="" class="plan_logo">
+                        <div class="logo_square second_logo">
+                            <picture class="plan_logo">
+                                <source srcset="assets/svg/share_sm.svg" type="image/svg+xml" media="(max-width:767px)">
+                                <source srcset="assets/svg/share.svg" type="image/svg+xml" media="(min-width:767px)">
+                                <img src="assets/svg/share.svg" alt="">
+                            </picture>
                         </div>
-                       <p>Share us preferable dates</p>
+                       <p class="mobile_p">Share us preferable dates</p>
     
                     </div>
                     <div class="plan_element">
-                        <div class="logo_square">
-                            <img src="assets/svg/recommendation.png" alt="" class="plan_logo">
+                        <div class="logo_square third_logo">
+                            <picture class="plan_logo">
+                                <source srcset="assets/svg/recommednation_sm.svg" type="image/svg+xml" media="(max-width:767px)">
+                                <source srcset="assets/svg/recommednation.svg" type="image/svg+xml" media="(min-width:767px)">
+                                <img src="assets/svg/recommednation.svg" alt="">
+                            </picture>
                         </div>
-                       <p>We will give you recommendations</p>
+                       <p class="mobile_p">We will give you recommendations</p>
                     </div>
                 </div>
             </div>
@@ -96,23 +114,42 @@
             <div class="destinations_wrapper">
                 <div class="block_pic">
                 <figure class="destination_pic">
-                    <img src="assets/spain.jpg" alt="spain" class="destination_country">
+                    <picture class="destination_country">
+                        <source srcset="assets/spain_sm.jpg" type="image/jpeg" media="(max-width:390px)" class="sm">
+                        <source srcset="assets/spain.jpg" type="image/jpeg" media="(min-width:390px)">
+                        <img src="assets/spain.svg" alt="spain" class="sm">
+                    </picture>
+                   
                     <figcaption class="country_name">SPAIN</figcaption>
                 </figure>
                 <figure class="destination_pic">
-                    <img src="assets/japan.jpg" alt="japan" class="destination_country">
+                    <picture class="destination_country">
+                        <source srcset="assets/japan_sm.jpg" type="image/jpeg" media="(max-width:390px)" >
+                        <source srcset="assets/japan.jpg" type="image/jpeg" media="(min-width:390px)">
+                        <img src="assets/japan.svg" alt="japan">
+                    </picture>
+                   
                     <figcaption class="country_name">JAPAN</figcaption>
                 </figure>
                 <figure class="destination_pic">
-                    <img src="assets/usa.jpg" alt="usa" class="destination_country">
+                    <picture class="destination_country">
+                        <source srcset="assets/usa_sm.jpg" type="image/jpeg" media="(max-width:390px)">
+                        <source srcset="assets/usa.jpg" type="image/jpeg" media="(min-width:390px)">
+                        <img src="assets/usa.svg" alt="usa">
+                    </picture>
+
                     <figcaption class="country_name">USA</figcaption>
                 </figure>
                 </div>
             </div>
                 <div class="slider">
-                    <span class="dotes"><img src="assets/svg/Ellipse1.svg" alt="dote"></span>
-                    <span class="dotes"><img src="assets/svg/Ellipse2.svg" alt="dote"></span>
-                    <span class="dotes"><img src="assets/svg/Ellipse1.svg" alt="dote"></span>
+                    <span class="dotes"><img src="assets/svg/Ellipse2.svg" alt="dote" class="dote dote1"></span>
+                    <span class="dotes"><img src="assets/svg/Ellipse2.svg" alt="dote" class="dote dote2"></span>
+                    <span class="dotes"><img src="assets/svg/Ellipse2.svg" alt="dote" class="dote dote3"></span>
+                </div>
+                <div class="slider_arroy">
+                    <span class="arroy_mobile1"><img src="assets/svg/slider.svg" alt="arroy" class="arroy_m arroy1"></span>
+                    <span class="arroy_mobile2"><img src="assets/svg/slider.svg" alt="arroy" class="arroy_m arroy2"></span>
                 </div>
                 <div class="wrapper button_wrapper">
                     <button class="button_arroy button"><img class="arroy" src="./assets/svg/bi_arrow-right.svg" alt="">Find More</button>
@@ -122,33 +159,53 @@
             <div class="wrapper">
                 <h2 class="section_subtittle subtittle_stories">TRAVEL STORIES</h2>
                 <div class="story_block">
-                    <img src="assets/thailand.jpg" alt="thailand" class="pic_stories">
+                    <picture class="story_image_blcok">
+                        <source srcset="assets/thailand_sm.jpg" type="image/jpeg" media="(max-width:390px)">
+                        <source srcset="assets/thailand.jpg" type="image/jpeg" media="(min-width:390px)">
+                        <img src="assets/thailand.jpg" alt="thailand" class="pic_stories">
+                    </picture>
                     <div class="story_wrapper">                    
                         <h3 class="story_sub">10 Photos of Attractive Thailand</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="#!" class="story_link">Read More</a></p>
-                     </div>
-                </div>
-                <div class="story_block">
-                    <img src="assets/utah.jpg" alt="utah" class="pic_stories">
-                    <div class="story_wrapper">
-                        <h3 class="story_sub">Canyonlands National Park, Utah</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="#!" class="story_link">Read More</a></p>
+                        <p class="story_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla<span class="text_sm"> pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</span>. Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                        <a href="#!" class="story_link">Read More</a>                    
                     </div>
                 </div>
                 <div class="story_block">
-                    <img src="assets/mountain.jpg" alt="mountains" class="pic_stories">
+                    <picture class="story_image_blcok">
+                        <source srcset="assets/utah_sm.jpg" type="image/jpeg" media="(max-width:390px)">
+                        <source srcset="assets/utah.jpg" type="image/jpeg" media="(min-width:390px)">
+                        <img src="assets/utah.jpg" alt="thailand" class="pic_stories">
+                    </picture>
+                    <div class="story_wrapper">
+                        <h3 class="story_sub">Canyonlands National Park, Utah</h3>
+                        <p class="story_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla<span class="text_sm"> pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</span>. Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                        <a href="#!" class="story_link">Read More</a>                    
+                    </div>
+                </div>
+                <div class="story_block">
+                    <picture class="story_image_blcok">
+                        <source srcset="assets/mountain_sm.jpg" type="image/jpeg" media="(max-width:390px)">
+                        <source srcset="assets/mountain.jpg" type="image/jpeg" media="(min-width:390px)">
+                        <img src="assets/mountain.jpg" alt="thailand" class="pic_stories">
+                    </picture>
                     <div class="story_wrapper">
                         <h3 class="story_sub">I left my heart in the Mountains!</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="#!" class="story_link">Read More</a></p>
+                        <p class="story_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla<span class="text_sm"> pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</span>. Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                        <a href="#!" class="story_link">Read More</a>
     
                     </div>
                 </div>
                 <div class="story_block story_block_last">
-                    <img src="assets/desert.jpg" alt="desert" class="pic_stories">
+                    <picture class="story_image_blcok">
+                        <source srcset="assets/desert_sm.jpg" type="image/jpeg" media="(max-width:390px)" class="pic_stories">
+                        <source srcset="assets/desert.jpg" type="image/jpeg" media="(min-width:390px)" class="pic_stories">
+                        <img src="assets/desert.jpg" alt="thailand" class="pic_stories">
+                    </picture>
+                 
                     <div class="story_wrapper">
                         <h3 class="story_sub">The Longest journey in my life!</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit... <a href="#!" class="story_link">Read More</a></p>
-
+                        <p class="story_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla<span class="text_sm"> pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</span>. Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                        <a href="#!" class="story_link">Read More</a>
                     </div>
                 </div>
                 <div class="button_wrapper_stories">
@@ -157,7 +214,7 @@
             </div>
         </section>
     
-    <footer class="footer">
+    <footer class="footer" id="footer">
         <div class="wrapper">
             <div class="footer_wrapper">
                 <div class="pesolan_links">
@@ -169,7 +226,7 @@
                 </div>
                 <div class="footer_links">
                     <ul class="social-links">
-                        <li class="social-media"><a href="https://rs.school/js-stage0/ " class="link"><img src="./assets/svg/instagram.svg" alt="instagram"></a></li>
+                        <li class="social-media"><a href="https://github.com/denismezhenin" class="link"><img src="./assets/svg/instagram.svg" alt="instagram"></a></li>
                         <li class="social-media"><a href="https://rs.school/js-stage0/ " class="link"><img src="./assets/svg/youtube.svg" alt="youtube"></a></li>
                         <li class="social-media"><a href="https://rs.school/js-stage0/ " class="link"><img src="./assets/svg/twitter.svg" alt="twitter"></a></li>
                     </ul>
@@ -181,5 +238,6 @@
                
         </section> -->
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
