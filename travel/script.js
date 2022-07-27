@@ -85,6 +85,125 @@ if (changeToSignUp) {
      });
  }
 
+//  Slieder starts
+// let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+let btnPrv = document.querySelector('.arroy_mobile1');
+let btnNext = document.querySelector('.arroy_mobile2');
+let slider = document.querySelector('.block_pic');
+let sliders = document.querySelectorAll('.destination_pic');
+let slidersCount = document.querySelector('.destination_pic').offsetWidth
+let slederLength = (slidersCount.length - 1)
+let viewSlide = -1;
+
+
+btnNext.addEventListener("click", function (e) {
+    console.log(1)
+    if (viewSlide < 1) {
+        viewSlide++
+    } else {
+        viewSlide = -1
+    }
+    let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+    slider.style.transform = `translateX(${-viewSlide * veiwport}px)`;
+});
+
+btnPrv.addEventListener("click", function (e) {
+    console.log(1)
+    if (viewSlide > -1) {
+        viewSlide--
+    } else {
+        viewSlide = 1
+
+    }
+    let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+    slider.style.transform = `translateX(${-viewSlide * veiwport}px)`;
+});
+
+
+[document.querySelector('.destination1'), document.querySelector('.dote1')].forEach(item => {
+    item.addEventListener('click', event => { 
+        console.log(1)
+        if (( window.innerWidth <= 390 )) {
+            let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+            slider.style.transform = `translateX(${-(1) * veiwport}px)`;
+        } else {
+            let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+            slider.style.transform = `translateX(${-(-1) * veiwport / 2}px)`;
+        }
+    })
+})
+
+document.querySelector('.destination2').addEventListener('click', event => { 
+    if (( window.innerWidth <= 390 )) {
+        let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+        slider.style.transform = `translateX(${0}px)`;
+    } else {
+        let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+        slider.style.transform = `translateX(${0}px)`;
+    }
+})
+
+document.querySelector('.dote2').addEventListener('click', event => { 
+    if (( window.innerWidth <= 390 )) {
+        let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+        slider.style.transform = `translateX(${0}px)`;
+    } else {
+        let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+        slider.style.transform = `translateX(${0}px)`;
+    }
+})
+document.querySelector('.destination3').addEventListener('click', event => { 
+    if (( window.innerWidth <= 390 )) {
+        let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+        slider.style.transform = `translateX(${-1 * veiwport}px)`;
+    } else {
+        let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+        slider.style.transform = `translateX(${-1 * veiwport / 2}px)`;
+    }
+})
+
+document.querySelector('.dote3').addEventListener('click', event => { 
+    if (( window.innerWidth <= 390 )) {
+        let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+        slider.style.transform = `translateX(${-1 * veiwport}px)`;
+    } else {
+        let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+        slider.style.transform = `translateX(${-1 * veiwport / 2}px)`;
+    }
+})
+
+
+// [document.querySelector('.destination2'), document.querySelector('.dote2')].forEach(item => {
+//     item.addEventListener('click', event => { 
+//         console.log(1)
+//         if (( window.innerWidth <= 390 )) {
+//             slider.style.transform = `translateX(${(0) * veiwport}px)`;
+//         } else {
+//             slider.style.transform = `translateX(${0 * veiwport / 2}px)`;
+//         }
+//     })
+// })
+
+// [document.querySelector('.destination3'), document.querySelector('.dote3')].forEach(item => {
+//     item.addEventListener('click', event => { 
+//         console.log(3)
+//         if (( window.innerWidth <= 390 )) {
+//             slider.style.transform = `translateX(${-(1) * veiwport}px)`;
+//         } else {
+//             slider.style.transform = `translateX(${-(1) * veiwport / 2}px)`;
+//         }
+//     })
+// })
+
+
+
+
+
+
+
+//  Slieder ends
+
+
 
 
 
