@@ -187,6 +187,11 @@ document.querySelector('.dote3').addEventListener('click', event => {
     }
 })
 
+window.addEventListener('resize', (e) => {
+    if (( window.innerWidth <= 390 )) {
+        slider.style.transform = `translateX(${0}px)`;
+    }
+  });
 //  Slieder ends
 
 
