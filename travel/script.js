@@ -12,6 +12,7 @@ const password = document.querySelector('.password_input');
 const buttonAlert = document.querySelector('.button_entrance');
 const menu_links = document.querySelectorAll('.nav_item');
 const changeToSignUp = document.querySelector('.popup_buttom_link');
+let popChange = document.querySelector('.pop_tittle')
 
 
 if (burger_menu) {
@@ -72,16 +73,30 @@ Password: ${password.value}`)
 
 if (changeToSignUp) {
     changeToSignUp.addEventListener("click", function (e) {
-        document.querySelector('.pop_tittle').innerHTML = "Create account";
-        document.querySelector('.popup_buttom-text').innerHTML = "Already have an account?";
-        document.querySelector('.popup_buttom_link').innerHTML = "Log in";
-        document.querySelector('.button_entrance').innerHTML = "Sign Up";
-        document.getElementsByClassName('sign-in_button')[1].style.display = "none";
-        document.getElementsByClassName('sign-in_button')[0].style.display = "none";
-        document.getElementsByClassName('popup_line_between')[0].style.display = "none";
-        document.getElementsByClassName('popup_line')[1].style.display = "none";
-        document.getElementsByClassName('popup_line')[0].style.display = "none";
-        document.getElementsByClassName('popup_text_link')[0].style.display = "none";
+        if (popChange.textContent === 'Log in to your account') {
+            document.querySelector('.pop_tittle').innerHTML = "Create account";
+            document.querySelector('.popup_buttom-text').innerHTML = "Already have an account?";
+            document.querySelector('.popup_buttom_link').innerHTML = "Log in";
+            document.querySelector('.button_entrance').innerHTML = "Sign Up";
+            document.getElementsByClassName('sign-in_button')[1].style.display = "none";
+            document.getElementsByClassName('sign-in_button')[0].style.display = "none";
+            document.getElementsByClassName('popup_line_between')[0].style.display = "none";
+            document.getElementsByClassName('popup_line')[1].style.display = "none";
+            document.getElementsByClassName('popup_line')[0].style.display = "none";
+            document.getElementsByClassName('popup_text_link')[0].style.display = "none";
+        } else {
+            popChange.textContent = 'Log in to your account';
+            document.querySelector('.popup_buttom-text').innerHTML = "Don’t have an account?";
+            document.querySelector('.popup_buttom_link').innerHTML = "Register";
+            document.querySelector('.button_entrance').innerHTML = "Sign in";
+            document.getElementsByClassName('sign-in_button')[1].style.display = "flex";
+            document.getElementsByClassName('sign-in_button')[0].style.display = "flex";
+            document.getElementsByClassName('popup_line_between')[0].style.display = "flex";
+            document.getElementsByClassName('popup_line')[1].style.display = "flex";
+            document.getElementsByClassName('popup_line')[0].style.display = "none";
+            document.getElementsByClassName('popup_text_link')[0].style.display = "flex";
+        }
+
      });
  }
 
@@ -125,7 +140,7 @@ btnPrv.addEventListener("click", function (e) {
         console.log(1)
         if (( window.innerWidth <= 390 )) {
             let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
-            slider.style.transform = `translateX(${-(1) * veiwport}px)`;
+            slider.style.transform = `translateX(${-(-1) * veiwport}px)`;
         } else {
             let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
             slider.style.transform = `translateX(${-(-1) * veiwport / 2}px)`;
@@ -172,40 +187,11 @@ document.querySelector('.dote3').addEventListener('click', event => {
     }
 })
 
-
-// [document.querySelector('.destination2'), document.querySelector('.dote2')].forEach(item => {
-//     item.addEventListener('click', event => { 
-//         console.log(1)
-//         if (( window.innerWidth <= 390 )) {
-//             slider.style.transform = `translateX(${(0) * veiwport}px)`;
-//         } else {
-//             slider.style.transform = `translateX(${0 * veiwport / 2}px)`;
-//         }
-//     })
-// })
-
-// [document.querySelector('.destination3'), document.querySelector('.dote3')].forEach(item => {
-//     item.addEventListener('click', event => { 
-//         console.log(3)
-//         if (( window.innerWidth <= 390 )) {
-//             slider.style.transform = `translateX(${-(1) * veiwport}px)`;
-//         } else {
-//             slider.style.transform = `translateX(${-(1) * veiwport / 2}px)`;
-//         }
-//     })
-// })
-
-
-
-
-
-
-
 //  Slieder ends
 
 
 
 
 
-console.log('Слайдер не успел сделать, если есть возможность пожалуйста проверьте в четверг, постараюсь успеть')
+console.log('')
 

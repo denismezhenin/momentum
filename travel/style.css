@@ -655,7 +655,7 @@ text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16)
    flex-wrap: nowrap;
     justify-content:center;
     align-items: center;
-    
+    transition: 0.3s ease;
     transform: translateX(0)
     /* width: 2520px;
     margin-left: -500px; */
@@ -1191,6 +1191,11 @@ font-weight: 700;
         top: 0;
     }
 
+    .popup_sign-in {
+        left: 0;
+        margin-left: 0px;
+    }
+
     .main_tittle, .main_subtittle {
         display: none;
     }
@@ -1337,7 +1342,7 @@ font-weight: 700;
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
-        
+        transform: translateX(0px);
         /* width: 100%; */
             /* transform: translateX(-360px); */
         /* margin: 0px 15px; */
@@ -1519,6 +1524,7 @@ font-weight: 700;
         left: 0;
         background: url(./assets/footer_sm.jpg) no-repeat center; 
     } 
+
 }
 
 
