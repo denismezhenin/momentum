@@ -176,6 +176,9 @@ btnPrv.addEventListener("click", function (e) {
         } else {
             let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
             slider.style.transform = `translateX(${-(-1) * veiwport / 2}px)`;
+            document.querySelector('.dote2').style.opacity = '0.5';
+            document.querySelector('.dote1').style.opacity = '1';
+            document.querySelector('.dote3').style.opacity = '0.5';
         }
     })
 })
@@ -187,6 +190,9 @@ document.querySelector('.destination2').addEventListener('click', event => {
     } else {
         let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
         slider.style.transform = `translateX(${0}px)`;
+        document.querySelector('.dote2').style.opacity = '1';
+        document.querySelector('.dote1').style.opacity = '0.5';
+        document.querySelector('.dote3').style.opacity = '0.5';
     }
 })
 
@@ -200,6 +206,9 @@ document.querySelector('.dote2').addEventListener('click', event => {
     } else {
         let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
         slider.style.transform = `translateX(${0}px)`;
+        document.querySelector('.dote2').style.opacity = '1';
+        document.querySelector('.dote1').style.opacity = '0.5';
+        document.querySelector('.dote3').style.opacity = '0.5';
     }
 })
 document.querySelector('.destination3').addEventListener('click', event => { 
@@ -209,6 +218,9 @@ document.querySelector('.destination3').addEventListener('click', event => {
     } else {
         let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
         slider.style.transform = `translateX(${-1 * veiwport / 2}px)`;
+        document.querySelector('.dote2').style.opacity = '0.5';
+        document.querySelector('.dote1').style.opacity = '0.5';
+        document.querySelector('.dote3').style.opacity = '1';
     }
 })
 
@@ -222,6 +234,9 @@ document.querySelector('.dote3').addEventListener('click', event => {
     } else {
         let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
         slider.style.transform = `translateX(${-1 * veiwport / 2}px)`;
+        document.querySelector('.dote2').style.opacity = '0.5';
+        document.querySelector('.dote1').style.opacity = '0.5';
+        document.querySelector('.dote3').style.opacity = '1';
     }
 })
 
