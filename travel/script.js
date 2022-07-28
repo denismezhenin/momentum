@@ -112,7 +112,7 @@ let viewSlide = -1;
 
 
 btnNext.addEventListener("click", function (e) {
-    console.log(1)
+
     if (viewSlide < 1) {
         viewSlide++
     } else {
@@ -120,10 +120,25 @@ btnNext.addEventListener("click", function (e) {
     }
     let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
     slider.style.transform = `translateX(${-viewSlide * veiwport}px)`;
+    if (slider.style.transform == `translateX(${(0) * veiwport}px)`) {
+        console.log(10)
+        document.querySelector('.dote2').style.opacity = '1';
+        document.querySelector('.dote1').style.opacity = '0.5';
+        document.querySelector('.dote3').style.opacity = '0.5';
+    } else if (slider.style.transform == `translateX(${(-1) * veiwport}px)`) {
+        document.querySelector('.dote2').style.opacity = '0.5';
+        document.querySelector('.dote1').style.opacity = '0.5';
+        document.querySelector('.dote3').style.opacity = '1';
+    }
+    else if (slider.style.transform == `translateX(${(1) * veiwport}px)`) {
+        document.querySelector('.dote2').style.opacity = '0.5';
+        document.querySelector('.dote1').style.opacity = '1';
+        document.querySelector('.dote3').style.opacity = '0.5';
+    }
 });
 
 btnPrv.addEventListener("click", function (e) {
-    console.log(1)
+
     if (viewSlide > -1) {
         viewSlide--
     } else {
@@ -132,15 +147,32 @@ btnPrv.addEventListener("click", function (e) {
     }
     let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
     slider.style.transform = `translateX(${-viewSlide * veiwport}px)`;
+    if (slider.style.transform == `translateX(${(0) * veiwport}px)`) {
+        console.log(10)
+        document.querySelector('.dote2').style.opacity = '1';
+        document.querySelector('.dote1').style.opacity = '0.5';
+        document.querySelector('.dote3').style.opacity = '0.5';
+    } else if (slider.style.transform == `translateX(${(-1) * veiwport}px)`) {
+        document.querySelector('.dote2').style.opacity = '0.5';
+        document.querySelector('.dote1').style.opacity = '0.5';
+        document.querySelector('.dote3').style.opacity = '1';
+    }
+    else if (slider.style.transform == `translateX(${(1) * veiwport}px)`) {
+        document.querySelector('.dote2').style.opacity = '0.5';
+        document.querySelector('.dote1').style.opacity = '1';
+        document.querySelector('.dote3').style.opacity = '0.5';
+    }
 });
 
 
 [document.querySelector('.destination1'), document.querySelector('.dote1')].forEach(item => {
     item.addEventListener('click', event => { 
-        console.log(1)
         if (( window.innerWidth <= 390 )) {
             let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
             slider.style.transform = `translateX(${-(-1) * veiwport}px)`;
+            document.querySelector('.dote2').style.opacity = '0.5';
+            document.querySelector('.dote1').style.opacity = '1';
+            document.querySelector('.dote3').style.opacity = '0.5';
         } else {
             let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
             slider.style.transform = `translateX(${-(-1) * veiwport / 2}px)`;
@@ -162,6 +194,9 @@ document.querySelector('.dote2').addEventListener('click', event => {
     if (( window.innerWidth <= 390 )) {
         let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
         slider.style.transform = `translateX(${0}px)`;
+        document.querySelector('.dote2').style.opacity = '1';
+        document.querySelector('.dote1').style.opacity = '0.5';
+        document.querySelector('.dote3').style.opacity = '0.5';
     } else {
         let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
         slider.style.transform = `translateX(${0}px)`;
@@ -181,6 +216,9 @@ document.querySelector('.dote3').addEventListener('click', event => {
     if (( window.innerWidth <= 390 )) {
         let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
         slider.style.transform = `translateX(${-1 * veiwport}px)`;
+        document.querySelector('.dote2').style.opacity = '0.5';
+        document.querySelector('.dote1').style.opacity = '0.5';
+        document.querySelector('.dote3').style.opacity = '1';
     } else {
         let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
         slider.style.transform = `translateX(${-1 * veiwport / 2}px)`;
@@ -189,14 +227,22 @@ document.querySelector('.dote3').addEventListener('click', event => {
 
 window.addEventListener('resize', (e) => {
     if (( window.innerWidth <= 390 )) {
-        slider.style.transform = `translateX(${0}px)`;
+        let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+        slider.style.transform = `translateX(${(1) * veiwport}px)`;
+
+
     }
+    else  {
+         let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+        slider.style.transform = `translateX(${(0) * veiwport}px)`;
+    }
+
   });
+  if (( window.innerWidth <= 390 )) {
+    let veiwport = document.querySelector('.destinations_wrapper').offsetWidth;
+   slider.style.transform = `translateX(${(1) * veiwport}px)`;
+}
 //  Slieder ends
-
-
-
-
 
 console.log('')
 

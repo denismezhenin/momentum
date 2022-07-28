@@ -1302,6 +1302,17 @@ font-weight: 700;
         opacity: 0.5;
     }
 
+    .dote1 {
+        opacity: 1;
+    }
+
+    .dote2 {
+        opacity: 0.5;
+    }
+    .dote3 {
+        opacity: 0.5;
+    }
+
     /* .dote1 {
         opacity: 1;
     } */
