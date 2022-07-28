@@ -249,7 +249,7 @@ margin: 0px;
 .popup_sign-in {
     display: none;
     position: absolute;
-    top: 100px;
+    top: 30px;
     left: 50%;
     margin-left: -330px;
     background: linear-gradient(177.09deg, #FFFFFF 6.15%, #0D606F 202.69%);
@@ -321,6 +321,7 @@ margin: 0px;
     font-weight: 400;
     font-size: 20px;
     line-height: 26px;
+    border: none;
     box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
     border-radius: 10px;
     color: #FFFFFF;
@@ -358,6 +359,7 @@ margin: 0px;
     max-width: 560px;
     min-width: 100px;
     margin-bottom: 8px;
+    border: none;
     background: #FFFFFF;
     box-shadow: inset 0px 0px 3px rgba(13, 96, 111, 0.08), inset 0px 2px 3px rgba(13, 96, 111, 0.16);
     border-radius: 10px;
@@ -711,6 +713,16 @@ text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16)
 .dotes:last-child {
     padding-left: 5px;
 
+}
+.dote1 {
+    opacity: 0.5;
+}
+
+.dote2 {
+    opacity: 1;
+}
+.dote3 {
+    opacity: 0.5;
 }
 
 .button_wrapper {
@@ -1393,6 +1405,7 @@ font-weight: 700;
 
     .arroy_mobile2 {
         margin-right: 6.5%;
+        opacity: 0.5;
     }
 
     .button_wrapper {
