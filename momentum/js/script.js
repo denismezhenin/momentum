@@ -52,6 +52,9 @@ function showGreeting() {
     if(localStorage.getItem('name')) {
       name.value = localStorage.getItem('name');
     }
+    if (!localStorage.getItem('city')) {
+      localStorage.setItem('city', city.value = 'minsk')
+    }
   }
 window.addEventListener('load', getLocalStorage)
 
@@ -106,18 +109,70 @@ function getRandomNumber() {
 const weatherIcon = document.querySelector('.weather-icon')
 const temperature = document.querySelector('.temperature')
 const weatherDescription = document.querySelector('.weather-description')
+const humidity = document.querySelector('.humidity')
+const wind = document.querySelector('.wind')
+const city = document.querySelector('.city')
+const error = document.querySelector('.weather-error')
 
-async function getWeather(url) {
+// async function getWeather() {
+//   console.log(city.value)
+//   // if (city.value = )
+//   city.value = localStorage.getItem('city');
+//   console.log(city.value)
+//   // if (city.value = localStorage.getItem('city') == '') {
+//   //   city.value = 'minsk'
+//   // }
+//   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
 
-  const res = await fetch(url);
-  const data = await res.json()
-  console.log(data.weather[0].id, data.weather[0].description, data.main.temp)
-  weatherIcon.className = 'weather-icon owf'
-  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-  temperature.textContent = `${data.main.temp}°C`;
-  weatherDescription.textContent = data.weather[0].description;
-}
-getWeather(`https://api.openweathermap.org/data/2.5/weather?q=minsk&lang=en&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`)
+//     // let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
+  
+//   let res = await fetch(url);
+//   if (res.status == '404' || city.value == '') {
+//     error.textContent = 'Error! Please write correcct name of city'
+//     weatherIcon.textContent = '';
+//     temperature.textContent = ``;
+//     weatherDescription.textContent = '';
+//     wind.textContent = ``
+//     humidity.textContent = ``
+//       } 
+//   // console.log(res.status)
+//   let data = await res.json()
+//   // console.log(data.weather[0].id)
+//   weatherIcon.className = 'weather-icon owf'
+//   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+  
+//   temperature.textContent = `${Math.round(data.main.temp)}°C`;
+//   weatherDescription.textContent = data.weather[0].description;
+//   wind.textContent = `Wind speed: ${Math.round(data.wind.speed)}m/s`
+//   humidity.textContent = `Humidity: ${data.main.humidity}%`
+//  error.textContent = ''
+// }
+// getWeather()
+// console.log(city.value)
+// city.onchange = () => {
+//   localStorage.setItem('city', city.value)
+//   getWeather(city.value)
+// }
 
 
 // Weather widget end
+// Quotes start
+const quote = document.querySelector('.quote')
+const author = document.querySelector('.author')
+const changeQouteButton = document.querySelector('.change-quote')
+async function getQuotes() {
+  const quotes = 'data.json';
+  const res = await fetch(quotes);
+  const data = await res.json();
+  console.log(data[1])
+  let randomQuote = Math.round(Math.random() * (data[1].length - 1))
+  quote.textContent = `${data[1][randomQuote].text}`
+  author.textContent = `${data[1][randomQuote].author}`
+  console.log(randomQuote)
+}
+getQuotes() 
+changeQouteButton.onclick = () => {
+  getQuotes() 
+}
+
+// Quotes end
