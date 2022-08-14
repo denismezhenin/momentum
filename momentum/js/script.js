@@ -1,3 +1,5 @@
+import playList from './playList.js'
+
 // Start time-calendar 
 const time = document.querySelector('.time');
 const day = document.querySelector('.date');
@@ -92,8 +94,8 @@ function getRandomNumber() {
  }
 
  function getSlidePrev() {
-  randomNum = (Number(randomNum) - 1).toString().padStart(2, '0')
-  if (randomNum == 00) {
+  randomNum = (Number(randomNum) - 1).toString().padStart(2, '0');
+  if (randomNum == '00') {
     randomNum = '20'
   }
   setBg()
@@ -176,3 +178,67 @@ changeQouteButton.onclick = () => {
 }
 
 // Quotes end
+
+// Music Start
+let isPlay = false 
+const play = document.querySelector('.play')
+const playNext = document.querySelector('.play-next')
+const playPrev = document.querySelector('.play-prev')
+let playNum = 0
+const playListLength = playList.length - 1
+const playListContainer = document.querySelector('.play-list')
+
+const audio = new Audio()
+
+function playAudio() {
+  audio.src = playList[playNum].src
+  // audio.currentTime = 0
+  if (!isPlay) {
+    audio.play()
+    isPlay = true
+  }
+  else {
+    audio.pause()
+    isPlay = false
+  }
+}
+
+function tooglePlayButton() {
+  play.classList.toggle('pause')
+}
+audio.onended = () => playNextTrack();
+
+
+play.addEventListenegitr('click', tooglePlayButton)
+play.addEventListener('click', playAudio)
+
+function playNextTrack() {
+playNum++
+if (playNum == playListLength + 1) {
+playNum = 0
+}
+audio.src = playList[playNum].src
+audio.play()
+}
+
+function playPrevTrack() {
+  playNum-- 
+if (playNum == -1) {
+  playNum = playListLength
+}
+audio.src = playList[playNum].src
+audio.play()
+}
+
+playNext.addEventListener('click', playNextTrack)
+playPrev.addEventListener('click', playPrevTrack)
+
+playList.forEach(element => {
+  const li = document.createElement('li');
+  li.classList.add('play-item')
+  li.textContent = element.title
+  playListContainer.append(li)
+});
+
+
+// Music end
