@@ -1,20 +1,22 @@
 import playList from './playList.js'
 
 // Start time-calendar 
+let language = 'en'
 const time = document.querySelector('.time');
 const day = document.querySelector('.date');
 const date = new Date()
 const options = {weekday: 'long', month: 'long', day: 'numeric',};
 const greeting = document.querySelector('.greeting');
 const hours = date.getHours();
-const greetingText = `Good ${getTimeofDay(hours)}`
+let greetingText = ``
+let timeOfTheDay = ''
 
 
 
 function getTime() {
   time.textContent = new Date().toLocaleTimeString();
     setTimeout(getTime, 1000)
-    day.textContent = new Date().toLocaleDateString('en-US', options)
+    day.textContent = new Date().toLocaleDateString(`${language}-${language}`, options)
     showGreeting()
 }
 getTime()
@@ -25,25 +27,56 @@ getTime()
 
 
 function getTimeofDay(hours) {
-  switch (Math.floor(hours / 6)) {
-    case (0):
-      return 'nigth';
-      break;
-    case (1):
-      return 'morning';
-      break;
-    case (2):
-      return 'afternoon';
-      break;
-    case (3):
-      return 'evening';
-      break;
+  if (language == 'ru') {
+    if (Math.floor(hours / 6) == 0 ) {
+      timeOfTheDay = 'night'
+      return 'Доброй ночи';
+  } if (Math.floor(hours / 6) == 1 ) {
+    timeOfTheDay = 'morning'
+    return 'Доброго утра';
   }
+if (Math.floor(hours / 6) == 2 ) {
+  timeOfTheDay = 'afternoon'
+  return 'доброго дня';
+
+} if (Math.floor(hours / 6) == 3 ) {
+  timeOfTheDay = 'evening'
+  return 'Доброго вечера';
+} 
+  } if (language == 'en') {
+    if (Math.floor(hours / 6) == 0 ) {
+      timeOfTheDay = 'night'
+        return 'nigth';
+    } if (Math.floor(hours / 6) == 1 ) {
+      timeOfTheDay = 'morning'
+      return 'morning';
+    }
+  if (Math.floor(hours / 6) == 2 ) {
+    timeOfTheDay = 'afternoon'
+    return 'afternoon';
+ 
+} if (Math.floor(hours / 6) == 3 ) {
+  timeOfTheDay = 'evening'
+  return 'evening';
+}  
+  }
+  console.log(greetingText)
+  
 }
 
+
+
 function showGreeting() {
-  greeting.textContent = greetingText
+  getTimeofDay(hours) 
+  if (language == 'ru') {
+    greetingText = `${getTimeofDay(hours)}`
+    greeting.textContent = greetingText
+  } if (language == 'en') {
+    greetingText = `Good ${timeOfTheDay}`
+    greeting.textContent = greetingText
   }
+  }
+
   const name = document.querySelector('.name');
   function setLocalStorage() {
     localStorage.setItem('name', name.value)
@@ -72,13 +105,13 @@ function getRandomNumber() {
   return randomNum 
  }
  getRandomNumber()
-
  function setBg() {
+  getTimeofDay(hours)
   const img = new Image();
-  img.src = `https://raw.githubusercontent.com/denismezhenin/stage1-tasks/assets/images/${getTimeofDay(hours)}/${randomNum}.jpg`;
+  img.src = `https://raw.githubusercontent.com/denismezhenin/stage1-tasks/assets/images/${timeOfTheDay}/${randomNum}.jpg`;
   img.onload = () => {
     // console.log(img.src)
-    document.body.style.backgroundImage = `url('https://raw.githubusercontent.com/denismezhenin/stage1-tasks/assets/images/${getTimeofDay(hours)}/${randomNum}.jpg')`
+    document.body.style.backgroundImage = `url('https://raw.githubusercontent.com/denismezhenin/stage1-tasks/assets/images/${timeOfTheDay}/${randomNum}.jpg')`
   };
   
 }
@@ -116,45 +149,58 @@ const wind = document.querySelector('.wind')
 const city = document.querySelector('.city')
 const error = document.querySelector('.weather-error')
 
-// async function getWeather() {
-//   console.log(city.value)
-//   // if (city.value = )
-//   city.value = localStorage.getItem('city');
-//   console.log(city.value)
-//   // if (city.value = localStorage.getItem('city') == '') {
-//   //   city.value = 'minsk'
-//   // }
-//   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
+async function getWeather() {
+  console.log(city.value)
+  // if (city.value = )
+  city.value = localStorage.getItem('city');
+  console.log(city.value)
+  // if (city.value = localStorage.getItem('city') == '') {
+  //   city.value = 'minsk'
+  // }
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${language}&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
 
-//     // let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
+    // let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
   
-//   let res = await fetch(url);
-//   if (res.status == '404' || city.value == '') {
-//     error.textContent = 'Error! Please write correcct name of city'
-//     weatherIcon.textContent = '';
-//     temperature.textContent = ``;
-//     weatherDescription.textContent = '';
-//     wind.textContent = ``
-//     humidity.textContent = ``
-//       } 
-//   // console.log(res.status)
-//   let data = await res.json()
-//   // console.log(data.weather[0].id)
-//   weatherIcon.className = 'weather-icon owf'
-//   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+  let res = await fetch(url);
+  if (res.status == '404' || city.value == '') {
+    if (language == 'ru') {
+      error.textContent = 'Пожалуйста, введите правильное название города'
+    }
+    if (language == 'en') {
+      error.textContent = 'Error! Please write correcct name of city'
+    }
+   
+    weatherIcon.textContent = '';
+    temperature.textContent = ``;
+    weatherDescription.textContent = '';
+    wind.textContent = ``
+    humidity.textContent = ``
+      } 
+  // console.log(res.status)
+  let data = await res.json()
+  // console.log(data.weather[0].id)
+  weatherIcon.className = 'weather-icon owf'
+  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
   
-//   temperature.textContent = `${Math.round(data.main.temp)}°C`;
-//   weatherDescription.textContent = data.weather[0].description;
-//   wind.textContent = `Wind speed: ${Math.round(data.wind.speed)}m/s`
-//   humidity.textContent = `Humidity: ${data.main.humidity}%`
-//  error.textContent = ''
-// }
-// getWeather()
-// console.log(city.value)
-// city.onchange = () => {
-//   localStorage.setItem('city', city.value)
-//   getWeather(city.value)
-// }
+  temperature.textContent = `${Math.round(data.main.temp)}°C`;
+  weatherDescription.textContent = data.weather[0].description;
+  if (language == 'ru') {
+    wind.textContent = `Скорость ветра: ${Math.round(data.wind.speed)}m/s`
+    humidity.textContent = `Влажность: ${data.main.humidity}%`
+  }
+  if (language == 'en') {
+    wind.textContent = `Wind speed: ${Math.round(data.wind.speed)}m/s`
+    humidity.textContent = `Humidity: ${data.main.humidity}%`
+  }
+
+ error.textContent = ''
+}
+getWeather()
+console.log(city.value)
+city.onchange = () => {
+  localStorage.setItem('city', city.value)
+  getWeather(city.value)
+}
 
 
 // Weather widget end
@@ -166,11 +212,16 @@ async function getQuotes() {
   const quotes = 'data.json';
   const res = await fetch(quotes);
   const data = await res.json();
-  console.log(data[1])
   let randomQuote = Math.round(Math.random() * (data[1].length - 1))
-  quote.textContent = `${data[1][randomQuote].text}`
-  author.textContent = `${data[1][randomQuote].author}`
-  console.log(randomQuote)
+  if (language == 'ru') {
+    quote.textContent = `${data[0][randomQuote].text}`
+    author.textContent = `${data[0][randomQuote].author}`
+  }
+  if (language == 'en') {
+    quote.textContent = `${data[1][randomQuote].text}`
+    author.textContent = `${data[1][randomQuote].author}`
+  }
+
 }
 getQuotes() 
 changeQouteButton.onclick = () => {
@@ -195,7 +246,8 @@ function playAudio() {
   // audio.currentTime = 0
   if (!isPlay) {
     audio.play()
-    isPlay = true
+    isPlay = true;
+    selectAudioTrack()
   }
   else {
     audio.pause()
@@ -203,13 +255,17 @@ function playAudio() {
   }
 }
 
+// function selectAudioTrack() {
+//   playList.forEach((element, index) => index == playNum ? element.classList.add('item-active') : element.classList.remove('item-active'))
+// }
+
 function tooglePlayButton() {
   play.classList.toggle('pause')
 }
 audio.onended = () => playNextTrack();
 
 
-play.addEventListenegitr('click', tooglePlayButton)
+play.addEventListener('click', tooglePlayButton)
 play.addEventListener('click', playAudio)
 
 function playNextTrack() {
@@ -219,6 +275,7 @@ playNum = 0
 }
 audio.src = playList[playNum].src
 audio.play()
+selectAudioTrack()
 }
 
 function playPrevTrack() {
@@ -228,6 +285,7 @@ if (playNum == -1) {
 }
 audio.src = playList[playNum].src
 audio.play()
+selectAudioTrack()
 }
 
 playNext.addEventListener('click', playNextTrack)
@@ -240,5 +298,18 @@ playList.forEach(element => {
   playListContainer.append(li)
 });
 
+let tracks = document.querySelectorAll('.play-item')
+
+// tracks.forEach(element => console.log(element))
+
+function selectAudioTrack() {
+  playList.forEach((element, index) => index == playNum ? tracks[index].classList.add('item-active') : tracks[index].classList.remove('item-active'))
+}
+
+
 
 // Music end
+
+//translate start
+
+// translate end
