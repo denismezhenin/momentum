@@ -1,5 +1,6 @@
-import playList from '/js/playList.js'
- console.log(new)
+
+import playList from 'js/playList.js'
+ 
 // Start time-calendar 
 let language = 'en'
 const time = document.querySelector('.time');
