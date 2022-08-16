@@ -1,4 +1,4 @@
-import playList from '/js/playList.js'
+import playList from 'js/playList.js'
  
 // Start time-calendar 
 let language = 'en'
