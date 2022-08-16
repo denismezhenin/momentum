@@ -8,8 +8,15 @@ const date = new Date()
 const options = {weekday: 'long', month: 'long', day: 'numeric',};
 const greeting = document.querySelector('.greeting');
 const hours = date.getHours();
-let greetingText = ``
-let timeOfTheDay = ''
+let greetingText = ``;
+let timeOfTheDay = '';
+const weatherIcon = document.querySelector('.weather-icon')
+const temperature = document.querySelector('.temperature')
+const weatherDescription = document.querySelector('.weather-description')
+const humidity = document.querySelector('.humidity')
+const wind = document.querySelector('.wind')
+const city = document.querySelector('.city')
+const error = document.querySelector('.weather-error')
 
 
 
@@ -31,37 +38,35 @@ function getTimeofDay(hours) {
     if (Math.floor(hours / 6) == 0 ) {
       timeOfTheDay = 'night'
       return 'Доброй ночи';
-  } if (Math.floor(hours / 6) == 1 ) {
+  } else if (Math.floor(hours / 6) == 1 ) {
     timeOfTheDay = 'morning'
     return 'Доброго утра';
   }
-if (Math.floor(hours / 6) == 2 ) {
+else if (Math.floor(hours / 6) == 2 ) {
   timeOfTheDay = 'afternoon'
   return 'доброго дня';
 
-} if (Math.floor(hours / 6) == 3 ) {
+} else if (Math.floor(hours / 6) == 3 ) {
   timeOfTheDay = 'evening'
   return 'Доброго вечера';
 } 
-  } if (language == 'en') {
+  } else if (language == 'en') {
     if (Math.floor(hours / 6) == 0 ) {
       timeOfTheDay = 'night'
         return 'nigth';
-    } if (Math.floor(hours / 6) == 1 ) {
+    } else if (Math.floor(hours / 6) == 1 ) {
       timeOfTheDay = 'morning'
       return 'morning';
     }
-  if (Math.floor(hours / 6) == 2 ) {
+  else if (Math.floor(hours / 6) == 2 ) {
     timeOfTheDay = 'afternoon'
     return 'afternoon';
  
-} if (Math.floor(hours / 6) == 3 ) {
+} else if (Math.floor(hours / 6) == 3 ) {
   timeOfTheDay = 'evening'
   return 'evening';
 }  
   }
-  console.log(greetingText)
-  
 }
 
 
@@ -87,10 +92,14 @@ function showGreeting() {
     if(localStorage.getItem('name')) {
       name.value = localStorage.getItem('name');
     }
-    if (!localStorage.getItem('city')) {
-      localStorage.setItem('city', city.value = 'minsk')
-    }
+    // else if (!localStorage.getItem('city') && language == 'en') {
+    //   localStorage.setItem('city', city.value = 'Minsk')
+    // } else if (!localStorage.getItem('city') && language == 'ru') {
+    //   localStorage.setItem('city', city.value = 'Минск')
+    // }
+    // getWeather()
   }
+  getLocalStorage()
 window.addEventListener('load', getLocalStorage)
 
 // END greetings
@@ -110,7 +119,6 @@ function getRandomNumber() {
   const img = new Image();
   img.src = `https://raw.githubusercontent.com/denismezhenin/stage1-tasks/assets/images/${timeOfTheDay}/${randomNum}.jpg`;
   img.onload = () => {
-    // console.log(img.src)
     document.body.style.backgroundImage = `url('https://raw.githubusercontent.com/denismezhenin/stage1-tasks/assets/images/${timeOfTheDay}/${randomNum}.jpg')`
   };
   
@@ -119,7 +127,6 @@ function getRandomNumber() {
 
  function getSlideNext() {
   randomNum = (Number(randomNum) + 1).toString().padStart(2, '0')
-  console.log()
   if (randomNum == '21') {
     randomNum = '01'
   }
@@ -141,22 +148,18 @@ function getRandomNumber() {
 
 // Weather widget start
 // https://api.openweathermap.org/data/2.5/weather?q=minsk&lang=en&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric
-const weatherIcon = document.querySelector('.weather-icon')
-const temperature = document.querySelector('.temperature')
-const weatherDescription = document.querySelector('.weather-description')
-const humidity = document.querySelector('.humidity')
-const wind = document.querySelector('.wind')
-const city = document.querySelector('.city')
-const error = document.querySelector('.weather-error')
+
 
 async function getWeather() {
-  console.log(city.value)
-  // if (city.value = )
+
   city.value = localStorage.getItem('city');
-  console.log(city.value)
-  // if (city.value = localStorage.getItem('city') == '') {
-  //   city.value = 'minsk'
-  // }
+  if (city.value != localStorage.getItem('city') && language == 'en') {
+    city.value = 'Minsk'
+  }
+  else if (city.value != localStorage.getItem('city') && language == 'ru') {
+    city.value = 'Минск'
+  }
+
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${language}&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
 
     // let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
@@ -166,7 +169,7 @@ async function getWeather() {
     if (language == 'ru') {
       error.textContent = 'Пожалуйста, введите правильное название города'
     }
-    if (language == 'en') {
+    else if (language == 'en') {
       error.textContent = 'Error! Please write correcct name of city'
     }
    
@@ -176,9 +179,7 @@ async function getWeather() {
     wind.textContent = ``
     humidity.textContent = ``
       } 
-  // console.log(res.status)
   let data = await res.json()
-  // console.log(data.weather[0].id)
   weatherIcon.className = 'weather-icon owf'
   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
   
@@ -188,7 +189,7 @@ async function getWeather() {
     wind.textContent = `Скорость ветра: ${Math.round(data.wind.speed)}m/s`
     humidity.textContent = `Влажность: ${data.main.humidity}%`
   }
-  if (language == 'en') {
+  else if (language == 'en') {
     wind.textContent = `Wind speed: ${Math.round(data.wind.speed)}m/s`
     humidity.textContent = `Humidity: ${data.main.humidity}%`
   }
@@ -196,7 +197,8 @@ async function getWeather() {
  error.textContent = ''
 }
 getWeather()
-console.log(city.value)
+
+
 city.onchange = () => {
   localStorage.setItem('city', city.value)
   getWeather(city.value)
@@ -204,6 +206,8 @@ city.onchange = () => {
 
 
 // Weather widget end
+
+
 // Quotes start
 const quote = document.querySelector('.quote')
 const author = document.querySelector('.author')
@@ -217,7 +221,7 @@ async function getQuotes() {
     quote.textContent = `${data[0][randomQuote].text}`
     author.textContent = `${data[0][randomQuote].author}`
   }
-  if (language == 'en') {
+  else if (language == 'en') {
     quote.textContent = `${data[1][randomQuote].text}`
     author.textContent = `${data[1][randomQuote].author}`
   }
@@ -300,16 +304,55 @@ playList.forEach(element => {
 
 let tracks = document.querySelectorAll('.play-item')
 
-// tracks.forEach(element => console.log(element))
-
 function selectAudioTrack() {
   playList.forEach((element, index) => index == playNum ? tracks[index].classList.add('item-active') : tracks[index].classList.remove('item-active'))
 }
+selectAudioTrack()
 
 
 
 // Music end
 
 //translate start
+const languageSelect = document.querySelectorAll('.language-selection')
+languageSelect[0].addEventListener('click', function() {
+  languageSelect[0].classList.add('russian-selected')
+  languageSelect[1].classList.remove('english-selected')
+  language = 'ru' 
+  city.placeholder = "Минск"
+  name.placeholder = "[Введите свое имя]" 
+  getTime()
+  getQuotes() 
+  getWeather()
+})
+languageSelect[1].addEventListener('click', function() {
+  languageSelect[1].classList.add('english-selected')
+  languageSelect[0].classList.remove('russian-selected')
+  language = 'en'
+  city.placeholder = "Minsk"
+  name.placeholder = "[Enter name]" 
+  getTime() 
+  getQuotes() 
+  getWeather()
+})
+
 
 // translate end
+
+// Settings start
+const settingButton = document.querySelector('.settings')
+const settingWrapper = document.querySelector('.settings-wrapper')
+
+settingButton.onclick = () => {
+  settingWrapper.classList.toggle('set-active') 
+}
+
+document.addEventListener('click', (e) => {
+  if (!settingWrapper.contains(e.target) && !settingButton.contains(e.target)) {
+    settingWrapper.classList.remove('set-active') 
+  }
+})
+
+console.log("Привет, не успел все сделать, постараюсь еще доделать, для связи discord: denismezhenin")
+
+// Settings end

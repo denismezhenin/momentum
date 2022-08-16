@@ -64,7 +64,7 @@ body {
   top: 2px;
   font-weight: 900;
 }
-.item-active {
+.item-e {
   padding-left: 25px;
   color: #C5B358;
 }
@@ -75,7 +75,8 @@ body {
 
 .player-icon,
 .slider-icon,
-.change-quote {
+.change-quote,
+.settings {
   width: 32px;
   height: 32px;
   background-size: 32px 32px;
@@ -89,15 +90,25 @@ body {
   transition: .3s;  
 }
 
+.language-selection{
+  cursor: pointer;
+  transition: .3s;
+  opacity: .8;
+}
+
 .player-icon:hover,
 .slider-icon:hover,
-.change-quote:hover {
+.change-quote:hover,
+.settings:hover,
+.language-selection:hover {
   opacity: 1;
 }
 
 .player-icon:active,
 .slider-icon:active,
-.change-quote:active {
+.change-quote:active, 
+.settings:active,
+.language-selection:active {
   border: 0;
   outline: 0;  
   transform: scale(1.1);
@@ -197,6 +208,7 @@ body {
   background-image: url("../assets/svg/slider-next.svg");
 }
 
+
 .time {
   min-height: 124px;
   margin-bottom: 10px;
@@ -246,8 +258,8 @@ body {
 
 .footer {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 30vh;
@@ -255,11 +267,29 @@ body {
   padding: 20px;
 }
 
+
+.quote-wrapper {
+  justify-self: center;
+  position: center;
+  align-self: center;
+  align-items: center;
+}
+
 .change-quote {
   margin-bottom: 30px;
   background-image: url("../assets/svg/reload.svg");  
 }
 
+.settings {
+  background-image: url('../assets/svg/settings1.svg');
+  /* fill: #fff; */
+  /* color: white; */
+}
+
+
+.settings-button {
+  align-self:flex-end
+}
 .quote {
   min-height: 32px;
 }
@@ -267,6 +297,37 @@ body {
 .author {
   min-height: 20px;
 }
+
+.settings-wrapper {
+  position: absolute;
+  bottom: 60px;
+  /* bottom: -100px; */
+  left: 20px;
+  min-width: 200px;
+  /* min-height: 200px; */
+  visibility: hidden;
+  /* background-color: #fff;
+  opacity: 0.3; */
+}
+.set-active {
+  visibility: visible;
+}
+
+.language-selection {
+padding: 5px;
+margin: 0 5px;
+}
+
+.english-selected {
+background-color: gray;
+font-weight: 800;
+}
+
+.russian-selected {
+  background-color: gray;
+  font-weight: 800;
+}
+
 
 @media (max-width: 768px) {
   .time {
