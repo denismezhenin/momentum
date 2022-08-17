@@ -328,6 +328,20 @@ font-weight: 800;
   font-weight: 800;
 }
 
+.settings-list {
+padding: 0;
+margin-left: 20px;
+list-style: none;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+}
+
+.setting-checkbox {
+  margin: 8px;
+}
+
 
 @media (max-width: 768px) {
   .time {
@@ -347,5 +361,6 @@ font-weight: 800;
   .name {
     font-size: 32px;
     padding: 5px;
+    visibility: ;
   }
 }

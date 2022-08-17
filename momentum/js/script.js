@@ -1,5 +1,5 @@
 
-import playList from '/js/playList.js'
+import playList from './playList.js'
 
 // 
 // Start time-calendar 
@@ -19,6 +19,7 @@ const humidity = document.querySelector('.humidity')
 const wind = document.querySelector('.wind')
 const city = document.querySelector('.city')
 const error = document.querySelector('.weather-error')
+
 
 
 
@@ -344,6 +345,10 @@ languageSelect[1].addEventListener('click', function() {
 // Settings start
 const settingButton = document.querySelector('.settings')
 const settingWrapper = document.querySelector('.settings-wrapper')
+const audioplayerContainer = document.querySelector('.player')
+const weatherContainer = document.querySelector('.weather')
+const timeContainer = document.querySelector('.time')
+const dateContainer = document.querySelector('.date')
 
 settingButton.onclick = () => {
   settingWrapper.classList.toggle('set-active') 
@@ -355,6 +360,16 @@ document.addEventListener('click', (e) => {
   }
 })
 
-console.log("Привет, не успел все сделать, постараюсь еще доделать, для связи discord: denismezhenin")
+audioplayer.addEventListener('change', () => {
+  if(audioplayer.checked) {
+    audioplayer.style.visibility = "visible"
+  }  else if (audioplayer.checked) {
+    audioplayer.style.visibility = "hidden"
+  }
 
+})
+
+
+// console.log("Привет, не успел все сделать, постараюсь еще доделать, для связи discord: denismezhenin")
+// console.log(audioplayer.checked)
 // Settings end
