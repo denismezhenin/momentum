@@ -39,6 +39,8 @@ body {
   margin-bottom: 28px;
 }
 
+
+
 .play-list {
   text-align: left;
 }
@@ -214,7 +216,7 @@ body {
   margin-bottom: 10px;
   font-family: 'Arial-MT';
   font-size: 100px;
-  letter-spacing: -4px;  
+  letter-spacing: -4px; 
 }
 
 .date {
@@ -308,9 +310,11 @@ body {
   visibility: hidden;
   /* background-color: #fff;
   opacity: 0.3; */
+  /* transition: .1s; */
 }
 .set-active {
   visibility: visible;
+  transition: .3s;
 }
 
 .language-selection {

@@ -10,7 +10,7 @@
 </head>
 <body>
   <header class="header">
-    <div class="player">
+    <div class="player animation">
       <div class="player-controls">
         <button class="play-prev player-icon"></button>
         <button class="play player-icon"></button>
@@ -18,7 +18,7 @@
       </div>
       <ul class="play-list"></ul>
     </div>
-    <div class="weather">
+    <div class="weather animation">
       <input type="text" class="city" value="" placeholder="Minsk">
       <i class="weather-icon owf"></i>
       <div class="weather-error"></div>
@@ -37,9 +37,9 @@
       <button class="slide-prev slider-icon"></button>
       <button class="slide-next slider-icon"></button>
     </div>
-    <time class="time"></time>
-    <date class="date"></date>
-    <div class="greeting-container">
+    <time class="time animation"></time>
+    <date class="date animation"></date>
+    <div class="greeting-container animation">
       <span class="greeting"></span>
       <input type="text" class="name" placeholder="[Enter name]"/>
     </div>
@@ -49,7 +49,7 @@
     <div class="settings-button">
       <button class="settings"></button>
     </div>
-    <div class="quote-wrapper">
+    <div class="quote-wrapper animation">
       <button class="change-quote"></button>
       <div>
         <div class="quote"></div>
@@ -62,12 +62,12 @@
     <span class="language-selection">RU</span>
     <span class="language-selection">EN</span>
     <ul class="settings-list">
-      <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="audioplayer" checked name="123"><label for="audioplayer">Audioplayer</label></li>
+      <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="player" checked name="123"><label for="player">Audioplayer</label></li>
       <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="weather" checked><label for="weather">Weather</label></li>
-      <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="greeting" checked><label for="greeting"greeting>Greeting</label></li>
-      <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="time" checked><label for="time">Time</label></li>
-      <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="date" checked><label for="Date">Date</label></li>
-      <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="quotes" checked><label for="Quotes">Quotes</label></li>
+      <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="greetings" checked><label for="greeting"greeting>Greeting</label></li>
+      <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="times" checked><label for="time">Time</label></li>
+      <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="dates" checked><label for="Date">Date</label></li>
+      <li class="settting-tittle"><input type="checkbox" class="setting-checkbox" id="quotes" checked><label for="quote">Quote</label></li>
     </ul>
   </div>
   <script type="module" src="js/script.js"></script>

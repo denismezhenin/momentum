@@ -345,10 +345,29 @@ languageSelect[1].addEventListener('click', function() {
 // Settings start
 const settingButton = document.querySelector('.settings')
 const settingWrapper = document.querySelector('.settings-wrapper')
-const audioplayerContainer = document.querySelector('.player')
+const playerContainer = document.querySelector('.player')
 const weatherContainer = document.querySelector('.weather')
-const timeContainer = document.querySelector('.time')
-const dateContainer = document.querySelector('.date')
+const timesContainer = document.querySelector('.time')
+const datesContainer = document.querySelector('.date')
+const greetingsContainer = document.querySelector('.greeting-container')
+const quotesContainer = document.querySelector('.quote-wrapper')
+let b = document.querySelectorAll('.setting-checkbox')
+
+// b.forEach((e) =>{
+//   // console.log(e.checked)
+//   // console.log(e.id)
+//   // console.log(`${e.id}Container`);
+//   // console.log(e)
+//   e.addEventListener('change', () => {
+//   if(e.checked) {
+//     console.log(e);
+//     // console.log(`${e.id}Container`)
+//     `${e.id}Container`.style.visibility = "visible"
+//   }  else if (!e.checked) {
+//     `${e.id}Container`.style.visibility = "hidden"
+//   }
+// })
+// })
 
 settingButton.onclick = () => {
   settingWrapper.classList.toggle('set-active') 
@@ -360,14 +379,57 @@ document.addEventListener('click', (e) => {
   }
 })
 
-audioplayer.addEventListener('change', () => {
-  if(audioplayer.checked) {
-    audioplayer.style.visibility = "visible"
-  }  else if (audioplayer.checked) {
-    audioplayer.style.visibility = "hidden"
+player.addEventListener('change', () => {
+  if(player.checked) {
+    playerContainer.style.opacity = "1"
+  }  else if (!player.checked) {
+    playerContainer.style.opacity = "0"
   }
 
 })
+
+dates.addEventListener('change', () => {
+  if(dates.checked) {
+    datesContainer.style.opacity = "1"
+  }  else if (!dates.checked) {
+    datesContainer.style.opacity = "0"
+  }
+})
+
+times.addEventListener('change', () => {
+  if(times.checked) {
+    timesContainer.style.opacity = "1"
+  }  else if (!times.checked) {
+    timesContainer.style.opacity = "0"
+  }
+})
+
+weather.addEventListener('change', () => {
+  if(weather.checked) {
+    weatherContainer.style.opacity = "1"
+  }  else if (!weather.checked) {
+    weatherContainer.style.opacity = "0"
+  }
+})
+
+greetings.addEventListener('change', () => {
+  if(greetings.checked) {
+    greetingsContainer.style.opacity = "1"
+  }  else if (!greetings.checked) {
+    greetingsContainer.style.opacity = "0"
+  }
+})
+
+quotes.addEventListener('change', () => {
+  console.log(12)
+  if(quotes.checked) {
+    console.log(1)
+    quotesContainer.style.opacity = "1"
+  }  else if (!quotes.checked) {
+    quotesContainer.style.opacity = "0"
+  }
+})
+
 
 
 // console.log("Привет, не успел все сделать, постараюсь еще доделать, для связи discord: denismezhenin")
