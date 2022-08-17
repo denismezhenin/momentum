@@ -346,6 +346,10 @@ align-items: flex-start;
   margin: 8px;
 }
 
+.animation {
+transition: 0.3s;
+}
+
 
 @media (max-width: 768px) {
   .time {
