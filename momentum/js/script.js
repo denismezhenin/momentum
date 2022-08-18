@@ -1,4 +1,3 @@
-
 import playList from './playList.js'
 
 // 
@@ -110,6 +109,8 @@ window.addEventListener('load', getLocalStorage)
 // Start slider
 const buttonNext = document.querySelector('.slide-next')
 const buttonPrev = document.querySelector('.slide-prev')
+let source = 'flickr'
+// ybTDi3Hz2Oy2maqN1CB84w2w88UtKNYV-_zvPK7OSRg
 
 let randomNum 
 function getRandomNumber() {
@@ -117,15 +118,52 @@ function getRandomNumber() {
   return randomNum 
  }
  getRandomNumber()
+
  function setBg() {
+if (source == 'github'){
+  getImageFromGithub ()
+  } else if (source == 'unsplash') {
+    getImageFromUnsplash()
+} else if(source == 'flickr') {
+  getImageFromflicr()
+}
+}
+
+function getImageFromGithub () {
   getTimeofDay(hours)
   const img = new Image();
   img.src = `https://raw.githubusercontent.com/denismezhenin/stage1-tasks/assets/images/${timeOfTheDay}/${randomNum}.jpg`;
   img.onload = () => {
-    document.body.style.backgroundImage = `url('https://raw.githubusercontent.com/denismezhenin/stage1-tasks/assets/images/${timeOfTheDay}/${randomNum}.jpg')`
-  };
-  
+    document.body.style.backgroundImage = `url('${img.src}')`
+  }
 }
+
+async function getImageFromUnsplash() {
+const url = 'https://api.unsplash.com/photos/random?query=morning&client_id=ybTDi3Hz2Oy2maqN1CB84w2w88UtKNYV-_zvPK7OSRg';
+const res = await fetch(url);
+let data = await res.json()
+console.log(data.urls.regular)
+const img = new Image();
+img.src = `${data.urls.regular}`;
+img.onload = () =>{
+  document.body.style.backgroundImage = `url('${img.src}')`
+}
+}
+
+async function getImageFromflicr() {
+
+  const url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=3c90511bfb28d24409d95e7c2e0275f0&tags=nature&extras=url_l&format=json&nojsoncallback=1';
+  const res = await fetch(url);
+  let data = await res.json()
+  const img = new Image();
+  let num = Math.round(Math.random() * (data.photos.photo.length - 1))
+  console.log(num)
+  img.src = `${(data.photos.photo[num]).url_l}`;
+  img.onload = () =>{
+    document.body.style.backgroundImage = `url('${img.src}')`
+  }
+  }
+
  setBg()
 
  function getSlideNext() {
@@ -164,8 +202,6 @@ async function getWeather() {
   }
 
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${language}&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
-
-    // let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
   
   let res = await fetch(url);
   if (res.status == '404' || city.value == '') {
@@ -317,6 +353,24 @@ selectAudioTrack()
 // Music end
 
 //translate start
+const settingsTitles = [
+  {ru: 'Плеер',
+ en: 'Audioplayer'},
+  {ru: 'Погода',
+ en: 'Weather'},
+ {ru: 'Приветствие',
+  en: 'Greeting'},
+  {ru: 'Время',
+  en: 'Time'},
+  {ru: 'Дата',
+  en: 'Date'},
+ {ru: 'Цитата',
+  en: 'Quote'},
+ ]
+
+let labelTitles = document.querySelectorAll('label')
+console.log(labelTitles)
+
 const languageSelect = document.querySelectorAll('.language-selection')
 languageSelect[0].addEventListener('click', function() {
   languageSelect[0].classList.add('russian-selected')
@@ -326,7 +380,8 @@ languageSelect[0].addEventListener('click', function() {
   name.placeholder = "[Введите свое имя]" 
   getTime()
   getQuotes() 
-  getWeather()
+  // getWeather()
+  changeSettingTitle()
 })
 languageSelect[1].addEventListener('click', function() {
   languageSelect[1].classList.add('english-selected')
@@ -336,9 +391,17 @@ languageSelect[1].addEventListener('click', function() {
   name.placeholder = "[Enter name]" 
   getTime() 
   getQuotes() 
-  getWeather()
+  // getWeather()
+  changeSettingTitle()
 })
 
+function changeSettingTitle() {
+  labelTitles.forEach((element, index) => { 
+    element.innerHTML = `${settingsTitles[index][language]}`
+})
+}
+
+changeSettingTitle()
 
 // translate end
 
@@ -433,5 +496,4 @@ quotes.addEventListener('change', () => {
 
 
 // console.log("Привет, не успел все сделать, постараюсь еще доделать, для связи discord: denismezhenin")
-// console.log(audioplayer.checked)
 // Settings end
