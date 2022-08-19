@@ -2,7 +2,7 @@ import playList from './playList.js'
 
 // 
 // Start time-calendar 
-let language = 'en'
+
 const time = document.querySelector('.time');
 const day = document.querySelector('.date');
 const date = new Date()
@@ -18,6 +18,13 @@ const humidity = document.querySelector('.humidity')
 const wind = document.querySelector('.wind')
 const city = document.querySelector('.city')
 const error = document.querySelector('.weather-error')
+let tag = 'nature'
+
+let language = localStorage.getItem('lan');
+if (!localStorage.getItem('lan')) {
+      language = 'en'
+}
+
 
 
 
@@ -109,9 +116,23 @@ window.addEventListener('load', getLocalStorage)
 // Start slider
 const buttonNext = document.querySelector('.slide-next')
 const buttonPrev = document.querySelector('.slide-prev')
-let source = 'flickr'
-// ybTDi3Hz2Oy2maqN1CB84w2w88UtKNYV-_zvPK7OSRg
+let source = localStorage.getItem('source');
+if (!localStorage.getItem('source')) {
+      source = 'github'
+     
+      }
+// city.value = localStorage.getItem('city');
+//   if (city.value != localStorage.getItem('city') && language == 'en') {
+//     city.value = 'Minsk'
 
+function getTagFromCache() {
+  getTimeofDay(hours)
+  backgoundTag.value = localStorage.getItem('backgoundTag');
+  if (backgoundTag.value != localStorage.getItem('backgoundTag')) {
+    backgoundTag.value = `${timeOfTheDay} nature`
+  }
+}
+console.log(backgoundTag.value)
 let randomNum 
 function getRandomNumber() {
   randomNum = ((Math.round(Math.random() * (20 - 1) + 1)).toString().padStart(2, '0'))
@@ -120,13 +141,16 @@ function getRandomNumber() {
  getRandomNumber()
 
  function setBg() {
-if (source == 'github'){
-  getImageFromGithub ()
-  } else if (source == 'unsplash') {
+  if (source == 'github' || source == 'null') {
+    console.log(1)
+    getImageFromGithub ()
+  }
+  else if (source == 'unsplash') {
     getImageFromUnsplash()
 } else if(source == 'flickr') {
   getImageFromflicr()
-}
+} 
+
 }
 
 function getImageFromGithub () {
@@ -139,10 +163,11 @@ function getImageFromGithub () {
 }
 
 async function getImageFromUnsplash() {
-const url = 'https://api.unsplash.com/photos/random?query=morning&client_id=ybTDi3Hz2Oy2maqN1CB84w2w88UtKNYV-_zvPK7OSRg';
+  getTagFromCache()
+  console.log(backgoundTag.value)
+const url = `https://api.unsplash.com/photos/random?query=${backgoundTag.value}&client_id=ybTDi3Hz2Oy2maqN1CB84w2w88UtKNYV-_zvPK7OSRg`;
 const res = await fetch(url);
 let data = await res.json()
-console.log(data.urls.regular)
 const img = new Image();
 img.src = `${data.urls.regular}`;
 img.onload = () =>{
@@ -151,13 +176,13 @@ img.onload = () =>{
 }
 
 async function getImageFromflicr() {
-
-  const url = 'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=3c90511bfb28d24409d95e7c2e0275f0&tags=nature&extras=url_l&format=json&nojsoncallback=1';
+  getTagFromCache()
+console.log(backgoundTag.value)
+  const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=3c90511bfb28d24409d95e7c2e0275f0&tag_mode=all&tags=${backgoundTag.value}&extras=url_l&format=json&nojsoncallback=1`;
   const res = await fetch(url);
   let data = await res.json()
   const img = new Image();
   let num = Math.round(Math.random() * (data.photos.photo.length - 1))
-  console.log(num)
   img.src = `${(data.photos.photo[num]).url_l}`;
   img.onload = () =>{
     document.body.style.backgroundImage = `url('${img.src}')`
@@ -298,9 +323,6 @@ function playAudio() {
   }
 }
 
-// function selectAudioTrack() {
-//   playList.forEach((element, index) => index == playNum ? element.classList.add('item-active') : element.classList.remove('item-active'))
-// }
 
 function tooglePlayButton() {
   play.classList.toggle('pause')
@@ -368,38 +390,60 @@ const settingsTitles = [
   en: 'Quote'},
  ]
 
-let labelTitles = document.querySelectorAll('label')
-console.log(labelTitles)
+let labelTitles = document.querySelectorAll('.lableForSetting')
 
 const languageSelect = document.querySelectorAll('.language-selection')
-languageSelect[0].addEventListener('click', function() {
-  languageSelect[0].classList.add('russian-selected')
-  languageSelect[1].classList.remove('english-selected')
-  language = 'ru' 
-  city.placeholder = "Минск"
-  name.placeholder = "[Введите свое имя]" 
-  getTime()
-  getQuotes() 
-  // getWeather()
-  changeSettingTitle()
-})
-languageSelect[1].addEventListener('click', function() {
-  languageSelect[1].classList.add('english-selected')
-  languageSelect[0].classList.remove('russian-selected')
+languageSelect[0].addEventListener('click', setEn )
+languageSelect[1].addEventListener('click', setRu)
+
+function setRu() {
+  languageSelect[1].classList.add('language-selected')
+  languageSelect[0].classList.remove('language-selected')
   language = 'en'
+  localStorage.setItem('lan', language)
   city.placeholder = "Minsk"
   name.placeholder = "[Enter name]" 
   getTime() 
   getQuotes() 
-  // getWeather()
+  getWeather()
   changeSettingTitle()
-})
+}
+
+function setEn() {
+  languageSelect[0].classList.add('language-selected')
+  languageSelect[1].classList.remove('language-selected')
+  language = 'ru' 
+  localStorage.setItem('lan', language)
+  city.placeholder = "Минск"
+  name.placeholder = "[Введите свое имя]" 
+  getTime()
+  getQuotes() 
+  getWeather()
+  changeSettingTitle()
+}
+
 
 function changeSettingTitle() {
   labelTitles.forEach((element, index) => { 
     element.innerHTML = `${settingsTitles[index][language]}`
 })
 }
+
+languageSelect.forEach(function(e) {
+  // console.log(e)
+  console.log( e.innerHTML.toLocaleLowerCase())
+  e.innerHTML.toLocaleLowerCase() == language ? e.classList.add('language-selected') : e.classList.remove('language-selected');
+  e.innerHTML.toLocaleLowerCase() == language ? e.classList.add('language-selected') : e.classList.remove('language-selected');
+// if ( e.innerHTML.toLocaleLowerCase() == 'ru') {
+//   e.classList.add('language-selected')
+// }
+// if ( e.innerHTML.toLocaleLowerCase() == 'en') {
+//   e.classList.add('language-selected')
+// }
+})
+
+language == 'ru' ? setRu : setEn
+
 
 changeSettingTitle()
 
@@ -414,23 +458,46 @@ const timesContainer = document.querySelector('.time')
 const datesContainer = document.querySelector('.date')
 const greetingsContainer = document.querySelector('.greeting-container')
 const quotesContainer = document.querySelector('.quote-wrapper')
-let b = document.querySelectorAll('.setting-checkbox')
+let settingCheck = document.querySelectorAll('.setting-checkbox')
 
-// b.forEach((e) =>{
-//   // console.log(e.checked)
-//   // console.log(e.id)
-//   // console.log(`${e.id}Container`);
-//   // console.log(e)
-//   e.addEventListener('change', () => {
-//   if(e.checked) {
-//     console.log(e);
-//     // console.log(`${e.id}Container`)
-//     `${e.id}Container`.style.visibility = "visible"
-//   }  else if (!e.checked) {
-//     `${e.id}Container`.style.visibility = "hidden"
-//   }
-// })
-// })
+const blocks = [playerContainer, weatherContainer, greetingsContainer, timesContainer, datesContainer, quotesContainer]
+
+github.addEventListener('click', () => {
+  source = 'github'
+  localStorage.setItem('source', source)
+  github.classList.add('source-active');
+flickr.classList.remove('source-active')
+unsplash.classList.remove('source-active')
+setBg()
+})
+
+unsplash.addEventListener('click', () => {
+  source = 'unsplash'
+  localStorage.setItem('source', source)
+  github.classList.remove('source-active');
+flickr.classList.remove('source-active')
+unsplash.classList.add('source-active')
+setBg()
+})
+
+flickr.addEventListener('click', () => {
+  source = 'flickr'
+  localStorage.setItem('source', source)
+  github.classList.remove('source-active');
+flickr.classList.add('source-active')
+unsplash.classList.remove('source-active')
+setBg()
+})
+
+
+
+backgoundTag.onchange = () => {
+  localStorage.setItem('backgoundTag', backgoundTag.value)
+  console.log(backgoundTag.value)
+  setBg()
+   }
+
+
 
 settingButton.onclick = () => {
   settingWrapper.classList.toggle('set-active') 
@@ -442,11 +509,47 @@ document.addEventListener('click', (e) => {
   }
 })
 
+settingCheck.forEach(function(e) {
+  localStorage.getItem(`${e.id}`) == 'false' ? e.checked = false : e.checked = true;
+})
+
+settingCheck.forEach(function(e, index) {
+ e.checked ? blocks[index].style.opacity = "1" : blocks[index].style.opacity = "0"
+  
+})
+
+// settingCheck.forEach(function(e, index) {
+//   console.log(e)
+//   e.addEventListener('change', () => {
+//     if(e.checked) {
+//       blocks[index].style.opacity = "1"
+     
+//       localStorage.setItem(e.id, e.id.checked = true)
+//       console.log(localStorage.getItem(e))
+//     }  else if (!e.checked) {
+//       blocks[index].style.opacity = "0"
+//       localStorage.setItem(`${e.id}`, e.id.checked = false)
+//       console.log(localStorage.getItem(e))
+//     }
+  
+//   })
+  
+//  })
+
+backgoundTag.value = localStorage.getItem('backgoundTag');
+if (backgoundTag.value != localStorage.getItem('backgoundTag')) {
+  backgoundTag.value = `${timeOfTheDay} nature`
+}
+
 player.addEventListener('change', () => {
   if(player.checked) {
     playerContainer.style.opacity = "1"
+    player.checked = true
+    localStorage.setItem('player', player.checked = true)
   }  else if (!player.checked) {
     playerContainer.style.opacity = "0"
+    localStorage.setItem('player', player.checked = false)
+    console.log(localStorage.getItem(player))
   }
 
 })
@@ -454,44 +557,65 @@ player.addEventListener('change', () => {
 dates.addEventListener('change', () => {
   if(dates.checked) {
     datesContainer.style.opacity = "1"
+    localStorage.setItem('dates', dates.checked = true)
   }  else if (!dates.checked) {
     datesContainer.style.opacity = "0"
+    localStorage.setItem('dates', dates.checked = false)
   }
 })
 
 times.addEventListener('change', () => {
   if(times.checked) {
     timesContainer.style.opacity = "1"
+    localStorage.setItem('times', times.checked = true)
+    times.checked = true
   }  else if (!times.checked) {
     timesContainer.style.opacity = "0"
+    localStorage.setItem('times', times.checked = false)
   }
 })
 
 weather.addEventListener('change', () => {
   if(weather.checked) {
     weatherContainer.style.opacity = "1"
+    weather.checked = true
+    localStorage.setItem('weather', weather.checked = true)
   }  else if (!weather.checked) {
     weatherContainer.style.opacity = "0"
+    localStorage.setItem('weather', weather.checked = false)
   }
 })
 
 greetings.addEventListener('change', () => {
   if(greetings.checked) {
     greetingsContainer.style.opacity = "1"
+    greetings.checked = true
+    localStorage.setItem('greetings', greetings.checked = true)
   }  else if (!greetings.checked) {
     greetingsContainer.style.opacity = "0"
+    localStorage.setItem('greetings', greetings.checked = false)
   }
 })
 
 quotes.addEventListener('change', () => {
   console.log(12)
   if(quotes.checked) {
-    console.log(1)
     quotesContainer.style.opacity = "1"
+    quotes.checked = true
+    localStorage.setItem('quotes', quotes.checked = true)
   }  else if (!quotes.checked) {
     quotesContainer.style.opacity = "0"
+    localStorage.setItem('quotes', quotes.checked = false)
   }
 })
+const backgroundSelect = document.querySelectorAll('.backgrounds-selection');
+backgroundSelect.forEach(function(e) {
+  if (e.id == source) {
+   e.classList.add('source-active')
+  }
+})
+
+
 
 
 

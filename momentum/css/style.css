@@ -94,7 +94,13 @@ body {
 
 .language-selection{
   cursor: pointer;
-  transition: .3s;
+  transition: .1s;
+  opacity: .8;
+}
+
+.backgrounds-selection {
+  cursor: pointer;
+  transition: .1s;
   opacity: .8;
 }
 
@@ -102,7 +108,8 @@ body {
 .slider-icon:hover,
 .change-quote:hover,
 .settings:hover,
-.language-selection:hover {
+.language-selection:hover,
+.backgrounds-selection:hover {
   opacity: 1;
 }
 
@@ -110,10 +117,11 @@ body {
 .slider-icon:active,
 .change-quote:active, 
 .settings:active,
-.language-selection:active {
+.language-selection:active,
+.backgrounds-selection:active {
   border: 0;
   outline: 0;  
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .play {
@@ -317,17 +325,30 @@ body {
   transition: .3s;
 }
 
+.source-active {
+  background-color: gray;
+  font-weight: 800;
+}
+
 .language-selection {
-padding: 5px;
-margin: 0 5px;
+padding: 0px;
+margin: 0 9px 9px;
 }
 
-.english-selected {
-background-color: gray;
-font-weight: 800;
+.background-selection {
+  padding: 5px;
+margin: 0px 5px;
 }
 
-.russian-selected {
+#backgound-tag {
+margin-left: 5px;
+background: none;
+}
+.background-selection-wrapper {
+  margin: 5px 0px;
+}
+
+.language-selected {
   background-color: gray;
   font-weight: 800;
 }
