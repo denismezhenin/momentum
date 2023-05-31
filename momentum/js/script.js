@@ -25,10 +25,6 @@ if (!localStorage.getItem('lan')) {
       language = 'en'
 }
 
-
-
-
-
 function getTime() {
   time.textContent = new Date().toLocaleTimeString();
     setTimeout(getTime, 1000)
@@ -78,8 +74,6 @@ else if (Math.floor(hours / 6) == 2 ) {
   }
 }
 
-
-
 function showGreeting() {
   getTimeofDay(hours) 
   if (language == 'ru') {
@@ -101,12 +95,7 @@ function showGreeting() {
     if(localStorage.getItem('name')) {
       name.value = localStorage.getItem('name');
     }
-    // else if (!localStorage.getItem('city') && language == 'en') {
-    //   localStorage.setItem('city', city.value = 'Minsk')
-    // } else if (!localStorage.getItem('city') && language == 'ru') {
-    //   localStorage.setItem('city', city.value = 'Минск')
-    // }
-    // getWeather()
+
   }
   getLocalStorage()
 window.addEventListener('load', getLocalStorage)
@@ -118,12 +107,9 @@ const buttonNext = document.querySelector('.slide-next')
 const buttonPrev = document.querySelector('.slide-prev')
 let source = localStorage.getItem('source');
 if (!localStorage.getItem('source')) {
-      source = 'github'
+      source = 'flickr'
      
       }
-// city.value = localStorage.getItem('city');
-//   if (city.value != localStorage.getItem('city') && language == 'en') {
-//     city.value = 'Minsk'
 
 function getTagFromCache() {
   getTimeofDay(hours)
@@ -132,7 +118,6 @@ function getTagFromCache() {
     backgoundTag.value = `${timeOfTheDay} nature`
   }
 }
-console.log(backgoundTag.value)
 let randomNum 
 function getRandomNumber() {
   randomNum = ((Math.round(Math.random() * (20 - 1) + 1)).toString().padStart(2, '0'))
@@ -142,7 +127,6 @@ function getRandomNumber() {
 
  function setBg() {
   if (source == 'github' || source == 'null') {
-    console.log(1)
     getImageFromGithub ()
   }
   else if (source == 'unsplash') {
@@ -164,7 +148,6 @@ function getImageFromGithub () {
 
 async function getImageFromUnsplash() {
   getTagFromCache()
-  console.log(backgoundTag.value)
 const url = `https://api.unsplash.com/photos/random?query=${backgoundTag.value}&client_id=ybTDi3Hz2Oy2maqN1CB84w2w88UtKNYV-_zvPK7OSRg`;
 const res = await fetch(url);
 let data = await res.json()
@@ -177,7 +160,6 @@ img.onload = () =>{
 
 async function getImageFromflicr() {
   getTagFromCache()
-console.log(backgoundTag.value)
   const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=3c90511bfb28d24409d95e7c2e0275f0&tag_mode=all&tags=${backgoundTag.value}&extras=url_l&format=json&nojsoncallback=1`;
   const res = await fetch(url);
   let data = await res.json()
@@ -213,17 +195,16 @@ console.log(backgoundTag.value)
 // END slider
 
 // Weather widget start
-// https://api.openweathermap.org/data/2.5/weather?q=minsk&lang=en&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric
 
 
 async function getWeather() {
 
   city.value = localStorage.getItem('city');
   if (city.value != localStorage.getItem('city') && language == 'en') {
-    city.value = 'Minsk'
+    city.value = 'Wroclaw'
   }
   else if (city.value != localStorage.getItem('city') && language == 'ru') {
-    city.value = 'Минск'
+    city.value = 'Вроцлав'
   }
 
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${language}&appid=c4549f43d9c0e684a43b8474124bd5af&units=metric`
@@ -430,16 +411,8 @@ function changeSettingTitle() {
 }
 
 languageSelect.forEach(function(e) {
-  // console.log(e)
-  console.log( e.innerHTML.toLocaleLowerCase())
   e.innerHTML.toLocaleLowerCase() == language ? e.classList.add('language-selected') : e.classList.remove('language-selected');
   e.innerHTML.toLocaleLowerCase() == language ? e.classList.add('language-selected') : e.classList.remove('language-selected');
-// if ( e.innerHTML.toLocaleLowerCase() == 'ru') {
-//   e.classList.add('language-selected')
-// }
-// if ( e.innerHTML.toLocaleLowerCase() == 'en') {
-//   e.classList.add('language-selected')
-// }
 })
 
 language == 'ru' ? setRu : setEn
@@ -493,7 +466,6 @@ setBg()
 
 backgoundTag.onchange = () => {
   localStorage.setItem('backgoundTag', backgoundTag.value)
-  console.log(backgoundTag.value)
   setBg()
    }
 
@@ -518,23 +490,6 @@ settingCheck.forEach(function(e, index) {
   
 })
 
-// settingCheck.forEach(function(e, index) {
-//   console.log(e)
-//   e.addEventListener('change', () => {
-//     if(e.checked) {
-//       blocks[index].style.opacity = "1"
-     
-//       localStorage.setItem(e.id, e.id.checked = true)
-//       console.log(localStorage.getItem(e))
-//     }  else if (!e.checked) {
-//       blocks[index].style.opacity = "0"
-//       localStorage.setItem(`${e.id}`, e.id.checked = false)
-//       console.log(localStorage.getItem(e))
-//     }
-  
-//   })
-  
-//  })
 
 backgoundTag.value = localStorage.getItem('backgoundTag');
 if (backgoundTag.value != localStorage.getItem('backgoundTag')) {
@@ -549,7 +504,6 @@ player.addEventListener('change', () => {
   }  else if (!player.checked) {
     playerContainer.style.opacity = "0"
     localStorage.setItem('player', player.checked = false)
-    console.log(localStorage.getItem(player))
   }
 
 })
@@ -598,7 +552,6 @@ greetings.addEventListener('change', () => {
 })
 
 quotes.addEventListener('change', () => {
-  console.log(12)
   if(quotes.checked) {
     quotesContainer.style.opacity = "1"
     quotes.checked = true
@@ -616,8 +569,4 @@ backgroundSelect.forEach(function(e) {
 })
 
 
-
-
-
-// console.log("Привет, не успел все сделать, постараюсь еще доделать, для связи discord: denismezhenin")
 // Settings end
